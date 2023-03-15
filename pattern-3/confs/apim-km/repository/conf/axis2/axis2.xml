@@ -526,26 +526,26 @@
         <parameter name="http.nonProxyHosts" locked="false">localhost|moon|sun</parameter-->
     <!--</transportSender>-->
 
-    <transportSender name="https" class="org.apache.synapse.transport.passthru.PassThroughHttpSSLSender">
-        <parameter name="non-blocking" locked="false">true</parameter>
-        <parameter name="keystore" locked="false">
-            <KeyStore>
-                <Location>repository/resources/security/wso2carbon.jks</Location>
-                <Type>JKS</Type>
-                <Password>wso2carbon</Password>
-                <KeyPassword>wso2carbon</KeyPassword>
-            </KeyStore>
-        </parameter>
-        <parameter name="truststore" locked="false">
-            <TrustStore>
-                <Location>repository/resources/security/client-truststore.jks</Location>
-                <Type>JKS</Type>
-                <Password>wso2carbon</Password>
-            </TrustStore>
-        </parameter>
-        <parameter name="HostnameVerifier">AllowAll</parameter>
-            <!--supports Strict|AllowAll|DefaultAndLocalhost or the default if none specified -->
-    </transportSender>
+<!--    <transportSender name="https" class="org.apache.synapse.transport.passthru.PassThroughHttpSSLSender">-->
+<!--        <parameter name="non-blocking" locked="false">true</parameter>-->
+<!--        <parameter name="keystore" locked="false">-->
+<!--            <KeyStore>-->
+<!--                <Location>repository/resources/security/wso2carbon.jks</Location>-->
+<!--                <Type>JKS</Type>-->
+<!--                <Password>wso2carbon</Password>-->
+<!--                <KeyPassword>wso2carbon</KeyPassword>-->
+<!--            </KeyStore>-->
+<!--        </parameter>-->
+<!--        <parameter name="truststore" locked="false">-->
+<!--            <TrustStore>-->
+<!--                <Location>repository/resources/security/client-truststore.jks</Location>-->
+<!--                <Type>JKS</Type>-->
+<!--                <Password>wso2carbon</Password>-->
+<!--            </TrustStore>-->
+<!--        </parameter>-->
+<!--        <parameter name="HostnameVerifier">AllowAll</parameter>-->
+<!--            &lt;!&ndash;supports Strict|AllowAll|DefaultAndLocalhost or the default if none specified &ndash;&gt;-->
+<!--    </transportSender>-->
 
     <!--<transportSender name="passthru-https" class="org.wso2.carbon.transport.passthru.PassThroughHttpSSLSender">
         <parameter name="non-blocking" locked="false">true</parameter>
