@@ -58,19 +58,19 @@ spec:
         volumeMounts:
         -
           name: apim-mgt-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.5.0/repository/deployment/server"
+          mountPath: "/home/wso2carbon/wso2-tmp/server"
         - name: apim-gw-manager-worker-bin
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/bin/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
         - name: apim-gw-manager-worker-conf
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
         - name: apim-gw-manager-worker-identity
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-identity/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
         - name: apim-gw-manager-worker-axis2
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-axis2/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-axis2/"
         - name: apim-gw-manager-worker-datasources
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-datasources/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
         - name: apim-gw-manager-worker-tomcat
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-tomcat/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
         livenessProbe:
           tcpSocket:
             port: 9443
