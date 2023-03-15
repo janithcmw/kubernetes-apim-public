@@ -16,6 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wso2apim-manager-worker
+  namespace: wso2
   labels:
     app: wso2apim-gw
     node: manager-worker
@@ -56,8 +57,7 @@ spec:
           protocol: "TCP"
 
         volumeMounts:
-        -
-          name: apim-mgt-storage-volume
+        - name: apim-mgt-storage-volume
           mountPath: "/home/wso2carbon/wso2-tmp/server"
         - name: apim-gw-manager-worker-bin
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
@@ -71,6 +71,11 @@ spec:
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
         - name: apim-gw-manager-worker-tomcat
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
+        - name: db-connector-jar
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+        - name: wso2am-conf-entrypoint
+          mountPath: "/home/wso2carbon/init.sh"
+          subPath: init.sh
         livenessProbe:
           tcpSocket:
             port: 9443
@@ -99,3 +104,10 @@ spec:
       - name: apim-gw-manager-worker-tomcat
         configMap:
           name: apim-gw-manager-worker-tomcat
+      - name: db-connector-jar
+        configMap:
+          name: db-connector-jar
+      - name: wso2am-conf-entrypoint
+        configMap:
+          name: wso2am-conf-entrypoint
+          defaultMode: 0407
