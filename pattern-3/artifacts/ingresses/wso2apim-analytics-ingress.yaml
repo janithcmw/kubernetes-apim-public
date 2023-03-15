@@ -15,8 +15,7 @@
 apiVersion: apps/v1
 kind: Ingress
 metadata:
-  name: *.*
-  namespace: wso2
+  name: wso2apim-analytics-ingress
   labels:
     pattern: wso2apim-pattern-3
   annotations:

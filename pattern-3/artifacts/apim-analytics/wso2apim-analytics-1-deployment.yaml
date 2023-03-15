@@ -15,8 +15,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: *.*
-  namespace: wso2
+  name: wso2apim-analytics-1
   labels:
     app: wso2apim-analytics
     node: wso2apim-analytics-1

@@ -15,8 +15,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: *.*
-  namespace: wso2
+  name: wso2apim-store
   labels:
     app: wso2apim-store
     pattern: wso2apim-pattern-3

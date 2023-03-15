@@ -18,8 +18,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: *.*
-  namespace: wso2
+  name: nginx-default-http-backend
   labels:
     k8s-app: nginx-default-http-backend
     pattern: wso2apim-pattern-3
