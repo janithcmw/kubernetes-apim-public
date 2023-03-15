@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       -
-        image: virajhasith/wso2am-250:1621359805584
+        image: virajhasith/wso2am-2.5.0:1621359805584
         name: wso2apim
         imagePullPolicy: IfNotPresent
         ports:
