@@ -20,7 +20,7 @@ metadata:
   name: wso2am-conf-entrypoint
   namespace: wso2
 data:
-  init.sh: |
+    docker-entrypoint.sh: |
       #!/bin/sh
       set -e
 
