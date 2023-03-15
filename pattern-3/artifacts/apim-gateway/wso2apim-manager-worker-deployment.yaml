@@ -74,8 +74,8 @@ spec:
         - name: db-connector-jar
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
         - name: wso2am-conf-entrypoint
-          mountPath: "/home/wso2carbon/init.sh"
-          subPath: init.sh
+          mountPath: "/home/wso2carbon/docker-entrypoint.sh"
+          subPath: docker-entrypoint.sh
         livenessProbe:
           tcpSocket:
             port: 9443
