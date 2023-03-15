@@ -23,6 +23,10 @@ spec:
   replicas: 2
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: wso2apim-km
+      node: key-manager
   template:
     metadata:
       labels:
@@ -30,7 +34,7 @@ spec:
         node: key-manager
     spec:
       containers:
-      - image: virajhasith/wso2am-250:1621359805584
+      - image: virajhasith/wso2is-km-5.6.0:1624892424637
         name: wso2apim-km
         imagePullPolicy: IfNotPresent
         ports:
@@ -42,17 +46,22 @@ spec:
           protocol: "TCP"
         volumeMounts:
         - name: apim-km-bin
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/bin/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
         - name: apim-km-conf
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
         - name: apim-km-identity
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-identity/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
         - name: apim-km-axis2
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-axis2/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-axis2/"
         - name: apim-km-datasources
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-datasources/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
         - name: apim-km-tomcat
-          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-tomcat/"
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
+        - name: db-connector-jar
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+        - name: wso2am-conf-entrypoint
+          mountPath: "/home/wso2carbon/docker-entrypoint.sh"
+          subPath: docker-entrypoint.sh
         livenessProbe:
           tcpSocket:
             port: 9443
@@ -78,3 +87,10 @@ spec:
       - name: apim-km-tomcat
         configMap:
           name: apim-km-tomcat
+      - name: db-connector-jar
+        configMap:
+          name: db-connector-jar
+      - name: wso2am-conf-entrypoint
+        configMap:
+          name: wso2am-conf-entrypoint
+          defaultMode: 0407
