@@ -786,8 +786,8 @@
                      class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher">
                 <order phase="Transport"/>
             </handler>
-	    <handler name="CarbonContextConfigurator"
-		class="org.wso2.carbon.mediation.initializer.handler.CarbonContextConfigurator"/>
+<!--	    <handler name="CarbonContextConfigurator"-->
+<!--		class="org.wso2.carbon.mediation.initializer.handler.CarbonContextConfigurator"/>-->
             <handler name="SOAPActionBasedDispatcher"
                      class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher">
                 <order phase="Transport"/>
@@ -799,8 +799,8 @@
             <!-- TEMPORALY-->
             <!--handler name="CacheMessageBuilderDispatchandler"
                      class="org.wso2.carbon.mediation.initializer.handler.CacheMessageBuilderDispatchandler"/-->
-            <handler name="CarbonContentConfigurator"
-                     class="org.wso2.carbon.mediation.initializer.handler.CarbonContextConfigurator"/>
+<!--            <handler name="CarbonContentConfigurator"-->
+<!--                     class="org.wso2.carbon.mediation.initializer.handler.CarbonContextConfigurator"/>-->
         </phase>
         <phase name="Addressing">
             <handler name="AddressingBasedDispatcher"
@@ -816,19 +816,19 @@
                      class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher"/>
             <handler name="SOAPActionBasedDispatcher"
                      class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher"/>
-            <handler name="RequestURIOperationDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIOperationDispatcher"/>
+<!--            <handler name="RequestURIOperationDispatcher"-->
+<!--                     class="org.apache.axis2.dispatchers.RequestURIOperationDispatcher"/>-->
             <handler name="SOAPMessageBodyBasedDispatcher"
                      class="org.apache.axis2.dispatchers.SOAPMessageBodyBasedDispatcher"/>
 
 	    <handler name="HTTPLocationBasedDispatcher"
                      class="org.apache.axis2.dispatchers.HTTPLocationBasedDispatcher"/>
-            <handler name="MultitenantDispatcher"
-                     class="org.wso2.carbon.tenant.dispatcher.MultitenantDispatcher"/>
-            <handler name="SynapseDispatcher"
-                     class="org.apache.synapse.core.axis2.SynapseDispatcher"/>
-            <handler name="SynapseMustUnderstandHandler"
-                     class="org.apache.synapse.core.axis2.SynapseMustUnderstandHandler"/>
+<!--            <handler name="MultitenantDispatcher"-->
+<!--                     class="org.wso2.carbon.tenant.dispatcher.MultitenantDispatcher"/>-->
+<!--            <handler name="SynapseDispatcher"-->
+<!--                     class="org.apache.synapse.core.axis2.SynapseDispatcher"/>-->
+<!--            <handler name="SynapseMustUnderstandHandler"-->
+<!--                     class="org.apache.synapse.core.axis2.SynapseMustUnderstandHandler"/>-->
         </phase>
         <!--  System pre defined phases       -->
         <phase name="RMPhase"/>
