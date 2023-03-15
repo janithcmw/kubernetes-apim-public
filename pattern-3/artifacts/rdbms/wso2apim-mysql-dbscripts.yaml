@@ -5,10 +5,10 @@ metadata:
   namespace: wso2
 data:
   mysql_apim.sql: |-
-    DROP DATABASE IF EXISTS WSO2AM_DB;
-    CREATE DATABASE WSO2AM_DB;
-    GRANT ALL ON WSO2AM_DB.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
-    USE WSO2AM_DB;
+    DROP DATABASE IF EXISTS apimgtdb;
+    CREATE DATABASE apimgtdb;
+    GRANT ALL ON apimgtdb.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
+    USE apimgtdb;
     CREATE TABLE IF NOT EXISTS IDN_BASE_TABLE (
             PRODUCT_NAME VARCHAR(20),
             PRIMARY KEY (PRODUCT_NAME)
@@ -1441,10 +1441,10 @@ data:
     -- Performance indexes end--
   
   mysql_umdb.sql: |-
-    DROP DATABASE IF EXISTS WSO2UM_DB;
-    CREATE DATABASE WSO2UM_DB;
-    GRANT ALL ON WSO2UM_DB.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
-    USE WSO2UM_DB;
+    DROP DATABASE IF EXISTS userdb;
+    CREATE DATABASE userdb;
+    GRANT ALL ON userdb.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
+    USE userdb;
     CREATE TABLE IF NOT EXISTS REG_CLUSTER_LOCK (
                  REG_LOCK_NAME VARCHAR (20),
                  REG_LOCK_STATUS VARCHAR (20),
@@ -1924,10 +1924,10 @@ data:
     )ENGINE INNODB;
 
   mysql_reg.sql: |-
-    DROP DATABASE IF EXISTS WSO2REG_DB;
-    CREATE DATABASE WSO2REG_DB;
-    GRANT ALL ON WSO2REG_DB.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
-    USE WSO2REG_DB;
+    DROP DATABASE IF EXISTS govregdb;
+    CREATE DATABASE govregdb;
+    GRANT ALL ON govregdb.* TO 'wso2carbon'@'%' IDENTIFIED BY 'wso2carbon';
+    USE govregdb;
     CREATE TABLE IF NOT EXISTS REG_CLUSTER_LOCK (
                  REG_LOCK_NAME VARCHAR (20),
                  REG_LOCK_STATUS VARCHAR (20),
