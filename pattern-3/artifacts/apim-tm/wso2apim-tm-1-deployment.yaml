@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wso2apim-tm-1
+  name: *.*
+  namespace: wso2
   labels:
     app: wso2apim
     node-1: tm-1
@@ -31,7 +32,7 @@ spec:
         node: tm
     spec:
       containers:
-      - image: docker.wso2.com/wso2am-kubernetes:2.1.0
+      - image: virajhasith/wso2am-250:1621359805584
         name: wso2apim
         imagePullPolicy: IfNotPresent
         ports:
@@ -53,13 +54,13 @@ spec:
         volumeMounts:
         -
           name: apim-tm1-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
+          mountPath: "/home/wso2user/wso2am-2.5.0/repository/deployment/server"
         - name: apim-tm1-bin
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/bin/"
         - name: apim-tm1-conf
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf/"
         - name: apim-tm1-identity
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-identity/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-identity/"
         livenessProbe:
           tcpSocket:
             port: 9443

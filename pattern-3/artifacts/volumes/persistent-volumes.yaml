@@ -15,7 +15,8 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-1
+  name: *.*
+  namespace: wso2
   labels:
     type: local
     pattern: wso2apim-pattern-3
@@ -33,7 +34,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-2
+  name: *.*
+  namespace: wso2
   labels:
     type: local
     pattern: wso2apim-pattern-3
@@ -51,7 +53,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-3
+  name: *.*
+  namespace: wso2
   labels:
     type: local
     pattern: wso2apim-pattern-3
@@ -69,7 +72,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-4
+  name: *.*
+  namespace: wso2
   labels:
     type: local
     pattern: wso2apim-pattern-3
@@ -87,7 +91,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-5
+  name: *.*
+  namespace: wso2
   labels:
     type: local
     pattern: wso2apim-pattern-3

@@ -15,10 +15,11 @@
 # Source reference:
 # https://github.com/kubernetes/ingress/tree/nginx-0.9.0-beta.11/
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-ingress-controller
+  name: *.*
+  namespace: wso2
   labels:
     k8s-app: nginx-ingress-controller
     pattern: wso2apim-pattern-3

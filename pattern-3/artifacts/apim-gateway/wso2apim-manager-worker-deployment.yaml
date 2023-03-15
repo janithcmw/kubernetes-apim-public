@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wso2apim-manager-worker
@@ -24,6 +24,11 @@ spec:
   replicas: 2
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: wso2apim-gw
+      node: manager-worker
+      app-sv: wso2apim-gw-sv
   template:
     metadata:
       labels:
@@ -33,7 +38,7 @@ spec:
     spec:
       containers:
       -
-        image: docker.wso2.com/wso2am-kubernetes:2.1.0
+        image: virajhasith/wso2am-250:1621359805584
         name: wso2apim
         imagePullPolicy: IfNotPresent
         ports:
@@ -53,19 +58,19 @@ spec:
         volumeMounts:
         -
           name: apim-mgt-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
+          mountPath: "/home/wso2user/wso2am-2.5.0/repository/deployment/server"
         - name: apim-gw-manager-worker-bin
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/bin/"
         - name: apim-gw-manager-worker-conf
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf/"
         - name: apim-gw-manager-worker-identity
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-identity/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-identity/"
         - name: apim-gw-manager-worker-axis2
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-axis2/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-axis2/"
         - name: apim-gw-manager-worker-datasources
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-datasources/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-datasources/"
         - name: apim-gw-manager-worker-tomcat
-          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-tomcat/"
+          mountPath: "/home/wso2user/wso2am-2.5.0-conf/conf-tomcat/"
         livenessProbe:
           tcpSocket:
             port: 9443
