@@ -774,10 +774,7 @@
 
            NOTE: This should be the very first phase in this flow
         -->
-	<phase name="MsgInObservation">
-		<handler name="TraceMessageBuilderDispatchHandler"
-                 	 class="org.apache.synapse.transport.passthru.util.TraceMessageBuilderDispatchHandler"/>
-	</phase>
+	<phase name="MsgInObservation"/>
 	<phase name="Validation"/>
         <phase name="Transport">
             <!--TEMPORALY-->
