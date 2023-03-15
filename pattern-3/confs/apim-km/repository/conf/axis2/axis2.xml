@@ -851,10 +851,6 @@
         <!--these phase will run irrespective of the service-->
         <phase name="PolicyDetermination"/>
 		<!--security handler for pass through -->
-		<phase name="PTSecurityOutPhase">
-			<handler name="RelaySecuirtyMessageBuilderDispatchandler"
-                     class="org.apache.synapse.transport.passthru.util.RelaySecuirtyMessageBuilderDispatchandler"/>
-        </phase>
         <phase name="MessageOut"/>
         <phase name="Security"/>
 
