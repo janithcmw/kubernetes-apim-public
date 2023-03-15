@@ -35,7 +35,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/apimgtdb?autoReconnect=true</url>
+                    <url>jdbc:mysql://apim-rdbms:3306/apimgtdb?useSSL=false</url>
                     <username>wso2carbon</username>
                     <password>wso2carbon</password>
                     <defaultAutoCommit>false</defaultAutoCommit>
@@ -57,7 +57,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/userdb?autoReconnect=true</url>
+                    <url>jdbc:mysql://apim-rdbms:3306/userdb?useSSL=false</url>
                     <username>wso2carbon</username>
                     <password>wso2carbon</password>
                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
@@ -78,7 +78,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/govregdb?autoReconnect=true</url>
+                    <url>jdbc:mysql://apim-rdbms:3306/govregdb?useSSL=false</url>
                     <username>wso2carbon</username>
                     <password>wso2carbon</password>
                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
