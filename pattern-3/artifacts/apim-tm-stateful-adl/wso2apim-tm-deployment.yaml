@@ -1,0 +1,100 @@
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wso2apim-tm-stateful
+  namespace: wso2
+  labels:
+    app: wso2apim
+    node: tm-stateful
+    pattern: wso2apim-pattern-3-stateful
+spec:
+  replicas: 2
+  serviceName: wso2am-tm-headless-service
+  selector:
+    matchLabels:
+      app: wso2apim
+      node: tm-stateful
+      deployment: wso2apim-pattern-3-am-tm-stateful
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wso2apim
+        node: tm-stateful
+        deployment: wso2apim-pattern-3-am-tm-stateful
+    spec:
+      containers:
+        - image: virajhasith/wso2am-2.5.0:1621359805584
+          name: wso2apim
+          imagePullPolicy: IfNotPresent
+          ports:
+            -
+              containerPort: 5672
+              protocol: "TCP"
+            -
+              containerPort: 9711
+              protocol: "TCP"
+            -
+              containerPort: 9611
+              protocol: "TCP"
+            -
+              containerPort: 7711
+              protocol: "TCP"
+            -
+              containerPort: 7611
+              protocol: "TCP"
+          volumeMounts:
+            - name: apim-tm-stateful-storage-volume
+              mountPath: "/home/wso2carbon/wso2-tmp/server"
+            - name: apim-tm-stateful-bin
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
+            - name: apim-tm-stateful-conf
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
+            - name: apim-tm-stateful-identity
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
+            - name: db-connector-jar
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+            - name: wso2am-conf-entrypoint
+              mountPath: "/home/wso2carbon/docker-entrypoint.sh"
+              subPath: docker-entrypoint.sh
+          livenessProbe:
+            tcpSocket:
+              port: 9443
+            initialDelaySeconds: 300
+            periodSeconds: 20
+      serviceAccountName: "wso2svcacct"
+      volumes:
+        - name: apim-tm-stateful-storage-volume
+          persistentVolumeClaim:
+            claimName: apim-tm-stateful-volume-claim
+        - name: apim-tm-stateful-bin
+          configMap:
+            name: apim-tm-stateful-bin
+        - name: apim-tm-stateful-conf
+          configMap:
+            name: apim-tm-stateful-conf
+        - name: apim-tm-stateful-identity
+          configMap:
+            name: apim-tm-stateful-identity
+        - name: db-connector-jar
+          configMap:
+            name: db-connector-jar
+        - name: wso2am-conf-entrypoint
+          configMap:
+            name: wso2am-conf-entrypoint
+            defaultMode: 0407
