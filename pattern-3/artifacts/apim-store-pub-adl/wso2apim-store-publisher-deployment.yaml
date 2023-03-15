@@ -13,28 +13,26 @@
 # limitations under the License.
 
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: wso2apim-tm-stateful
+  name: wso2apim-store-publisher-publisher
   namespace: wso2
   labels:
-    app: wso2apim
-    node: tm-stateful
-    pattern: wso2apim-pattern-3-stateful
+    app: wso2apim-store-publisher-publisher
+    node: store-local
+    pattern: wso2apim-pattern-3
 spec:
-  replicas: 2
-  serviceName: wso2am-tm-headless-service
   selector:
     matchLabels:
-      app: wso2apim
-      node: tm-stateful
-      deployment: wso2apim-pattern-3-am-tm-stateful
+      app: wso2apim-store-publisher
+      node: store-publisher-local
+      pattern: wso2apim-pattern-3
   template:
     metadata:
       labels:
-        app: wso2apim
-        node: tm-stateful
-        deployment: wso2apim-pattern-3-am-tm-stateful
+        app: wso2apim-store-publisher
+        node: store-publisher-local
+        pattern: wso2apim-pattern-3
     spec:
       containers:
         - image: virajhasith/wso2am-2.5.0:1621359805584
@@ -42,31 +40,26 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             -
-              containerPort: 5672
+              containerPort: 9763
               protocol: "TCP"
             -
-              containerPort: 9711
-              protocol: "TCP"
-            -
-              containerPort: 9611
-              protocol: "TCP"
-            -
-              containerPort: 7711
-              protocol: "TCP"
-            -
-              containerPort: 7611
+              containerPort: 9443
               protocol: "TCP"
           volumeMounts:
-            - name: apim-tm-stateful-storage-volume
+            - name: apim-store-publisher-storage-volume
               mountPath: "/home/wso2carbon/wso2-tmp/server"
-            - name: apim-tm-stateful-bin
+            - name: apim-store-publisher-bin
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
-            - name: apim-tm-stateful-conf
+            - name: apim-store-publisher-conf
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
-            - name: apim-tm-stateful-identity
+            - name: apim-store-publisher-identity
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
-            - name: apim-tm-stateful-identity-datasources
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+            - name: apim-store-publisher-axis2
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-axis2/"
+            - name: apim-store-publisher-datasources
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
+            - name: apim-store-publisher-tomcat
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
             - name: db-connector-jar
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
             - name: wso2am-conf-entrypoint
@@ -79,21 +72,27 @@ spec:
             periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
-        - name: apim-tm-stateful-storage-volume
+        - name: apim-store-publisher-storage-volume
           persistentVolumeClaim:
-            claimName: apim-tm-stateful-volume-claim
-        - name: apim-tm-stateful-bin
+            claimName: apim-store-publisher-volume-claim
+        - name: apim-store-publisher-bin
           configMap:
-            name: apim-tm-stateful-bin
-        - name: apim-tm-stateful-conf
+            name: apim-store-publisher-bin
+        - name: apim-store-publisher-conf
           configMap:
-            name: apim-tm-stateful-conf
-        - name: apim-tm-stateful-identity
+            name: apim-store-publisher-conf
+        - name: apim-store-publisher-identity
           configMap:
-            name: apim-tm-stateful-identity
-        - name: apim-tm-stateful-identity-datasources
+            name: apim-store-publisher-identity
+        - name: apim-store-publisher-axis2
           configMap:
-            name: apim-tm-stateful-identity-datasources
+            name: apim-store-publisher-axis2
+        - name: apim-store-publisher-datasources
+          configMap:
+            name: apim-store-publisher-datasources
+        - name: apim-store-publisher-tomcat
+          configMap:
+            name: apim-store-publisher-tomcat
         - name: db-connector-jar
           configMap:
             name: db-connector-jar
