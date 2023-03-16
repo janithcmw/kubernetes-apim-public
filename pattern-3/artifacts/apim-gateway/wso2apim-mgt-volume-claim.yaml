@@ -20,8 +20,9 @@ metadata:
     app: apim-gateway
     pattern: wso2apim-pattern-3
 spec:
+  storageClassName: "nfs"
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi

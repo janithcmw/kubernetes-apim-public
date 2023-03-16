@@ -60,7 +60,7 @@ spec:
             - name: apim-tm-stateful-storage-volume
               mountPath: "/home/wso2carbon/wso2-tmp/server"
             - name: apim-executionplans-storage-volume
-              mountPath: /home/wso2carbon/wso2am-2.5.0/repository/deployment/server/executionplans
+              mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
             - name: apim-tm-stateful-bin
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
             - name: apim-tm-stateful-conf

@@ -22,8 +22,9 @@ metadata:
     node: tm-stateful
     deployment: wso2apim-pattern-3-am-tm-stateful
 spec:
+  storageClassName: "nfs"
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
