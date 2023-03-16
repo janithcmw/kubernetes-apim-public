@@ -71,7 +71,7 @@ spec:
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
             - name: db-connector-jar
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
-            - name: wso2am-conf-entrypoint
+            - name: wso2apim-conf-entrypoint
               mountPath: "/home/wso2carbon/docker-entrypoint.sh"
               subPath: docker-entrypoint.sh
           livenessProbe:
@@ -102,7 +102,7 @@ spec:
         - name: db-connector-jar
           configMap:
             name: db-connector-jar
-        - name: wso2am-conf-entrypoint
+        - name: wso2apim-conf-entrypoint
           configMap:
-            name: wso2am-conf-entrypoint
+            name: wso2apim-conf-entrypoint
             defaultMode: 0407
