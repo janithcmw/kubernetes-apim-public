@@ -57,8 +57,6 @@ spec:
               containerPort: 7611
               protocol: "TCP"
           volumeMounts:
-            - name: apim-tm-stateful-storage-volume
-              mountPath: "/home/wso2carbon/wso2-tmp/server"
             - name: apim-executionplans-storage-volume
               mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
             - name: apim-tm-stateful-bin
@@ -81,9 +79,6 @@ spec:
             periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
-        - name: apim-tm-stateful-storage-volume
-          persistentVolumeClaim:
-            claimName: apim-tm-stateful-volume-claim
         - name: apim-executionplans-storage-volume
           persistentVolumeClaim:
             claimName: apim-executionplans-storage-claim
