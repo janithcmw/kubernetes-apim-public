@@ -59,7 +59,7 @@ spec:
           volumeMounts:
             - name: apim-tm-stateful-storage-volume
               mountPath: "/home/wso2carbon/wso2-tmp/server"
-            - name: apim-executionplans-storage
+            - name: apim-executionplans-storage-volume
               mountPath: /home/wso2carbon/wso2am-2.5.0/repository/deployment/server/executionplans
             - name: apim-tm-stateful-bin
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
@@ -84,9 +84,9 @@ spec:
         - name: apim-tm-stateful-storage-volume
           persistentVolumeClaim:
             claimName: apim-tm-stateful-volume-claim
-        - name: aapim-executionplans-storage
+        - name: apim-executionplans-storage-volume
           persistentVolumeClaim:
-            claimName: apim-executionplans-storage
+            claimName: apim-executionplans-storage-claim
         - name: apim-tm-stateful-bin
           configMap:
             name: apim-tm-stateful-bin

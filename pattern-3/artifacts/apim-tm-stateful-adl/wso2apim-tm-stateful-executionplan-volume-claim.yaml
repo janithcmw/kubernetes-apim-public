@@ -15,7 +15,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: apim-executionplans-storage
+  name: apim-executionplans-storage-claim
   namespace: wso2
   labels:
     app: wso2apim
