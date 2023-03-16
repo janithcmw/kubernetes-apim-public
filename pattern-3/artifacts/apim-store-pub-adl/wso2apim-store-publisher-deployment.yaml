@@ -15,10 +15,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wso2apim-store-publisher-publisher
+  name: wso2apim-store-publisher
   namespace: wso2
   labels:
-    app: wso2apim-store-publisher-publisher
+    app: wso2apim-store-publisher
     node: store-local
     pattern: wso2apim-pattern-3
 spec:
