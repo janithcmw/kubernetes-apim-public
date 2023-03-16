@@ -25,6 +25,7 @@ spec:
     app: wso2apim
     node: tm-stateful
     deployment: wso2apim-pattern-3-am-tm-stateful
+  sessionAffinity: ClientIP
   ports:
     # ports that this service should serve on
     -
