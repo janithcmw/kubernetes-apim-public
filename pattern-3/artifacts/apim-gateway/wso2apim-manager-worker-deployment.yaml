@@ -58,7 +58,7 @@ spec:
 
         volumeMounts:
         - name: apim-synapse-configs-storage-volume
-          mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server/synapse-configs"
+          mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
         - name: apim-gw-manager-worker-bin
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
         - name: apim-gw-manager-worker-conf
