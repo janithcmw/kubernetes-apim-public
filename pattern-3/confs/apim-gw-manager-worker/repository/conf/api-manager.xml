@@ -578,8 +578,8 @@
             </DataPublisherThreadPool>
         </DataPublisher>
         <PolicyDeployer>
-            <Enabled>true</Enabled>
-            <ServiceURL>https://wso2apim-tm-1.wso2.svc:9443${carbon.context}services/</ServiceURL>
+            <Enabled>false</Enabled>
+            <ServiceURL>https://wso2apim-tm:9443${carbon.context}services/</ServiceURL>
             <Username>${admin.username}</Username>
             <Password>${admin.password}</Password>
         </PolicyDeployer>
