@@ -57,8 +57,6 @@ spec:
           protocol: "TCP"
 
         volumeMounts:
-        - name: apim-mgt-storage-volume
-          mountPath: "/home/wso2carbon/wso2-tmp/server"
         - name: apim-synapse-configs-storage-volume
           mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server/synapse-configs"
         - name: apim-gw-manager-worker-bin
@@ -85,9 +83,6 @@ spec:
           periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
-      - name: apim-mgt-storage-volume
-        persistentVolumeClaim:
-          claimName: apim-mgt-volume-claim
       - name: apim-synapse-configs-storage-volume
         persistentVolumeClaim:
           claimName: apim-synapse-configs-storage-claim
