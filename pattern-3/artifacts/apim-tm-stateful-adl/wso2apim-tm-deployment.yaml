@@ -56,6 +56,30 @@ spec:
             -
               containerPort: 7611
               protocol: "TCP"
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 150
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 9443
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 150
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 9443
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: "10"
+              memory: 10000Mi
+            requests:
+              cpu: "6"
+              memory: 8000Mi
+
           volumeMounts:
             - name: apim-executionplans-storage-volume
               mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
@@ -72,11 +96,6 @@ spec:
             - name: apim-conf-entrypoint
               mountPath: "/home/wso2carbon/docker-entrypoint.sh"
               subPath: docker-entrypoint.sh
-          livenessProbe:
-            tcpSocket:
-              port: 9443
-            initialDelaySeconds: 300
-            periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
         - name: apim-executionplans-storage-volume
