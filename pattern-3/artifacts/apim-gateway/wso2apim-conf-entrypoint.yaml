@@ -17,7 +17,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: wso2am-conf-entrypoint
+  name: wso2apim-conf-entrypoint
   namespace: wso2
 data:
     docker-entrypoint.sh: |
