@@ -12,52 +12,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: apps/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wso2apim-ingress
+  namespace: wso2
   labels:
     pattern: wso2apim-pattern-3
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
 spec:
   tls:
-  - hosts:
-    - wso2apim-publisher
-    - wso2apim-store
-    - wso2apim-gw
+    - hosts:
+        - wso2apim-store-publisher
+        - wso2apim-gw
   rules:
-  - host: wso2apim-publisher
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wso2apim-publisher
-          servicePort: 9443
-      - path: /
-        backend:
-          serviceName: wso2apim-publisher
-          servicePort: 9763
-  - host: wso2apim-store
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wso2apim-store
-          servicePort: 9443
-      - path: /
-        backend:
-          serviceName: wso2apim-store
-          servicePort: 9763
-  - host: wso2apim-gw
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wso2apim-gw
-          servicePort: 8243
-      - path: /
-        backend:
-          serviceName: wso2apim-gw
-          servicePort: 8280
+    - host: wso2apim-publisher
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2apim-store-publisher
+                port:
+                  number: 9443
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2apim-store-publisher
+                port:
+                  number: 9763
+    - host: wso2apim-gw
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2apim-gw
+                port:
+                  number: 8243
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2apim-gw
+                port:
+                  number: 8280
