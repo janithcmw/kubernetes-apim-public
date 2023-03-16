@@ -68,7 +68,7 @@ spec:
             - name: apim-tm-stateful-identity
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
             - name: apim-tm-stateful-identity-datasources
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
             - name: db-connector-jar
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
             - name: apim-conf-entrypoint
