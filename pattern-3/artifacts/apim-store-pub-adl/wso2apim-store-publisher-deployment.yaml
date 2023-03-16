@@ -46,8 +46,6 @@ spec:
               containerPort: 9443
               protocol: "TCP"
           volumeMounts:
-            - name: apim-store-publisher-storage-volume
-              mountPath: "/home/wso2carbon/wso2-tmp/server"
             - name: apim-store-publisher-bin
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
             - name: apim-store-publisher-conf
@@ -72,9 +70,6 @@ spec:
             periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
-        - name: apim-store-publisher-storage-volume
-          persistentVolumeClaim:
-            claimName: apim-store-publisher-volume-claim
         - name: apim-store-publisher-bin
           configMap:
             name: apim-store-publisher-bin
