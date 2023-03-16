@@ -56,22 +56,6 @@ spec:
             -
               containerPort: 7611
               protocol: "TCP"
-          volumeMounts:
-            - name: apim-executionplans-storage-volume
-              mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
-            - name: apim-tm-stateful-bin
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
-            - name: apim-tm-stateful-conf
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
-            - name: apim-tm-stateful-identity
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
-            - name: apim-tm-stateful-identity-datasources
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
-            - name: db-connector-jar
-              mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
-            - name: apim-conf-entrypoint
-              mountPath: "/home/wso2carbon/docker-entrypoint.sh"
-              subPath: docker-entrypoint.sh
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 150
@@ -95,6 +79,23 @@ spec:
             requests:
               cpu: "6"
               memory: 8000Mi
+
+          volumeMounts:
+            - name: apim-executionplans-storage-volume
+              mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
+            - name: apim-tm-stateful-bin
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
+            - name: apim-tm-stateful-conf
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf/"
+            - name: apim-tm-stateful-identity
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-identity/"
+            - name: apim-tm-stateful-identity-datasources
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
+            - name: db-connector-jar
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+            - name: apim-conf-entrypoint
+              mountPath: "/home/wso2carbon/docker-entrypoint.sh"
+              subPath: docker-entrypoint.sh
       serviceAccountName: "wso2svcacct"
       volumes:
         - name: apim-executionplans-storage-volume
