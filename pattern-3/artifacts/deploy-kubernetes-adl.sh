@@ -49,7 +49,10 @@ kubectl create  -f rdbms/rdbms-service.yaml
 kubectl create  -f rdbms/rdbms-deployment.yaml
 
 # connector jar
-kubectl create configmap db-connector-jar --from-file=mysql-connector-java-5.1.47.jar
+kubectl create configmap db-connector-jar --from-file=../../../mysql-connector-java-5.1.47.jar
+
+# custom logging jarfile.
+#kubectl create configmap custom-logging-jar --from-file=../../../logging-extension-2.0.2-xl.jar not needed
 
 # GW
 # Configuration Maps
@@ -132,7 +135,6 @@ kubectl create  -f apim-km/wso2apim-km-deployment.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
 kubectl apply -f ingresses/wso2apim-ingress.yaml
 kubectl apply -f ingresses/wso2apim-tm-ingress.yaml
-
 #backend yaml
 kubectl create -f backend-mi/backend-mi-pod.yaml
 
