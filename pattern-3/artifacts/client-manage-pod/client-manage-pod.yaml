@@ -1,0 +1,18 @@
+# This pod will be used to manage the artifacts in the mounted location.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-manage-pod
+  namespace: wso2
+spec:
+  containers:
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["/bin/bash", "-c", "apt update && apt install -y ssh && while true; do sleep 3600; done"]
+      volumeMounts:
+        - name: clent-artifats-storage-volume
+          mountPath: "/home"
+  volumes:
+    - name: clent-artifats-storage-volume
+      persistentVolumeClaim:
+        claimName: clent-artifats-storage-volume-claim
