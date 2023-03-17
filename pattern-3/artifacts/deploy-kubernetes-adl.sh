@@ -71,6 +71,7 @@ kubectl create  -f apim-gateway/wso2apim-mgt-synapse-storage-claim.yaml
 kubectl create  -f apim-gateway/wso2apim-mgt-log-storage-claim.yaml
 
 # Configuration deployment TODO need sleep?
+kubectl create  -f apim-gateway/log-monitoring-pod.yaml
 kubectl create  -f apim-gateway/wso2apim-manager-worker-deployment.yaml
 
 #TM
