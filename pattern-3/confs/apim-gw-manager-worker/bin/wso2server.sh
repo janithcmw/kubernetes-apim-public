@@ -315,6 +315,7 @@ do
     -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
     -Dhttpclient.hostnameVerifier="AllowAll" \
+    -Djavax.net.debug=ssl:all \
     -DworkerNode=false \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
