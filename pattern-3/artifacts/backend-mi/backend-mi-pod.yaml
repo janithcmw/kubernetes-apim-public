@@ -4,6 +4,8 @@ kind: Pod
 metadata:
   name: backend-mi-pod
   namespace: wso2
+  labels:
+    app: backend-mi-pod
 spec:
   containers:
     - name: wso2mi

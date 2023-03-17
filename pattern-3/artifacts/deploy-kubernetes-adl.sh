@@ -71,8 +71,8 @@ kubectl create  -f apim-gateway/wso2apim-mgt-synapse-storage-claim.yaml
 kubectl create  -f apim-gateway/wso2apim-mgt-log-storage-claim.yaml
 
 # Configuration deployment TODO need sleep?
-kubectl create  -f apim-gateway/log-monitoring-pod.yaml
 kubectl create  -f apim-gateway/wso2apim-manager-worker-deployment.yaml
+kubectl create  -f apim-gateway/log-monitoring-pod.yaml
 
 #TM
 # Configuration Maps
@@ -132,6 +132,9 @@ kubectl create  -f apim-km/wso2apim-km-deployment.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
 kubectl apply -f ingresses/wso2apim-ingress.yaml
 kubectl apply -f ingresses/wso2apim-tm-ingress.yaml
+
+#backend yaml
+kubectl create -f backend-mi/backend-mi-pod.yaml
 
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
