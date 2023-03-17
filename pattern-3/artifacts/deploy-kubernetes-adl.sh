@@ -19,6 +19,9 @@
 # set namespace
 kubectl config set-context $(kubectl config current-context) --namespace=wso2
 
+# create ServiceAccount
+kubectl create -f service-account/apim-service-account.yaml
+
 #nfs for persistence volume
 helm repo add wso2 https://helm.wso2.com
 helm install wso2-nfs-server-provisioner wso2/nfs-server-provisioner --version 1.1.0
