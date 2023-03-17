@@ -129,8 +129,8 @@ kubectl create  -f apim-km/wso2apim-km-deployment.yaml
 
 #Ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
-kubectl apply -f ingress/wso2apim-ingress.yaml
-kubectl apply -f ingress/wso2apim-tm-ingress.yaml
+kubectl apply -f ingresses/wso2apim-ingress.yaml
+kubectl apply -f ingresses/wso2apim-tm-ingress.yaml
 
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
