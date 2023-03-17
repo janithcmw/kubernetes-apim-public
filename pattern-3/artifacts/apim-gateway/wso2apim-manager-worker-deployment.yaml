@@ -82,6 +82,8 @@ spec:
         volumeMounts:
         - name: apim-synapse-configs-storage-volume
           mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/deployment/server"
+        - name: apim-gw-log-storage-volume
+          mountPath: "/home/wso2carbon/wso2am-2.5.0/repository/logs"
         - name: apim-gw-manager-worker-bin
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/bin/"
         - name: apim-gw-manager-worker-conf
@@ -104,6 +106,9 @@ spec:
       - name: apim-synapse-configs-storage-volume
         persistentVolumeClaim:
           claimName: apim-synapse-configs-storage-claim
+      - name: apim-gw-log-storage-volume
+        persistentVolumeClaim:
+          claimName: apim-gw-log-storage-claim
       - name: apim-gw-manager-worker-bin
         configMap:
           name: apim-gw-manager-worker-bin
