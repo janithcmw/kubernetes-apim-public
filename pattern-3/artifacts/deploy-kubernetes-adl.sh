@@ -16,6 +16,9 @@
 # limitations under the License
 # ------------------------------------------------------------------------
 
+#create namespace
+kubectl create namespace wso2
+
 # set namespace
 kubectl config set-context $(kubectl config current-context) --namespace=wso2
 
@@ -27,10 +30,10 @@ helm repo add wso2 https://helm.wso2.com
 helm install wso2-nfs-server-provisioner wso2/nfs-server-provisioner --version 1.1.0
 
 #uninstall nfs
-helm uninstall my-nfs-server-provisioner
+helm uninstall wso2-nfs-server-provisioner
 
 # volumes
-kubectl create  -f volumes/persistent-volumes.yaml
+#kubectl create  -f volumes/persistent-volumes.yamlx  #not needed.
 
 #entrypoint-sh
 kubectl create -f apim-gateway/wso2apim-conf-entrypoint.yaml
@@ -41,6 +44,8 @@ echo 'deploying databases ...'
 kubectl create  -f rdbms/rdbms-persistent-volume-claim.yaml
 kubectl create  -f rdbms/wso2apim-mysql-dbscripts.yaml
 kubectl create  -f rdbms/rdbms-service.yaml
+
+# Configuration deployment TODO need sleep?
 kubectl create  -f rdbms/rdbms-deployment.yaml
 
 # connector jar
