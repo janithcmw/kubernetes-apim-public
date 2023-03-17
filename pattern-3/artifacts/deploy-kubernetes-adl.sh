@@ -68,7 +68,7 @@ kubectl create  -f apim-gateway/wso2apim-manager-worker-service.yaml
 # Configuration PVC
 #kubectl create  -f apim-gateway/wso2apim-mgt-volume-claim.yaml -- not needed
 kubectl create  -f apim-gateway/wso2apim-mgt-synapse-storage-claim.yaml
-
+kubectl create  -f apim-gateway/wso2apim-mgt-log-storage-claim.yaml
 
 # Configuration deployment TODO need sleep?
 kubectl create  -f apim-gateway/wso2apim-manager-worker-deployment.yaml
