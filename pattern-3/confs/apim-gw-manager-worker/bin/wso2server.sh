@@ -285,7 +285,7 @@ do
     -Xbootclasspath/a:"$CARBON_XBOOTCLASSPATH" \
     $JVM_MEM_OPTS \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -XX:HeapDumpPath="$CARBON_HOME/repository/logs/heap-dump.hprof" \
+    -XX:HeapDumpPath="$CARBON_HOME/repository/logs/heap-dump.hprof-$HOSTNAME" \
     $JAVA_OPTS \
     -Dcom.sun.management.jmxremote \
     -classpath "$CARBON_CLASSPATH" \
