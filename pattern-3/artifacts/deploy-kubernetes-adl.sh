@@ -154,6 +154,9 @@ kubectl create -f client-manage-pod/client-manage-pod.yaml
 #client jmeter pod
 kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 
+#client java client pod
+kubectl create -f client-deployment/client-deployment-jar-execution-scripts.yaml
+
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
 #kubectl create  configmap apim-publisher-identity --from-file=../confs/apim-publisher/repository/conf/identity/

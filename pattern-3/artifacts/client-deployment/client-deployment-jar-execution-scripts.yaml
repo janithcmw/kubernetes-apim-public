@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-jmeter-deployment
+  name: client-java-deployment
   namespace: wso2
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
         - name: client-jmeter
           image: ubuntu:latest
           command: ["/bin/bash", "-c"]
-          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run java connection creation client' && java -jar TestHTTPSClient-1.0-jar-with-dependencies.jar config.properties"]
+          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run java connection creation client' && cd /home/java-connection-client && java -jar TestHTTPSClient-1.0-jar-with-dependencies.jar config.properties"]
           volumeMounts:
             - name: clent-artifats-storage-volume
               mountPath: "/home"
