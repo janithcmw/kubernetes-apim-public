@@ -39,7 +39,8 @@ spec:
     spec:
       containers:
       -
-        image: virajhasith/wso2am-2.5.0:1621359805584withPatches
+        image: virajhasith/wso2am-2.5.0:1621359805584withLogPatches
+#        image: virajhasith/wso2am-2.5.0:1621359805584withPatches
 #        image: virajhasith/wso2am-2.5.0:1621359805584
         name: wso2apim
         imagePullPolicy: IfNotPresent
