@@ -5,7 +5,7 @@ metadata:
   name: client-java-session-affinity-deployment
   namespace: wso2
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: client-java-execution-session-affinity
