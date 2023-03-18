@@ -66,6 +66,7 @@ kubectl create  configmap apim-gw-manager-worker-tomcat --from-file=../confs/api
 # Configuration Services
 kubectl create  -f apim-gateway/wso2apim-sv-service.yaml
 kubectl create  -f apim-gateway/wso2apim-pt-service.yaml
+kubectl create  -f apim-gateway/wso2apim-pt-temp-service.yaml # crate only if needed to replicate the session affinity scenario.
 kubectl create  -f apim-gateway/wso2apim-manager-worker-service.yaml
 
 # Configuration PVC
@@ -156,6 +157,7 @@ kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 
 #client java client pod
 kubectl create -f client-deployment/client-deployment-jar-execution-scripts.yaml
+kubectl create -f client-deployment/client-deployment-jar-execution-temp-service-scripts.yaml
 
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
