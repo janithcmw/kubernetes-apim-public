@@ -33,4 +33,3 @@ spec:
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app: wso2apim-gw
-  sessionAffinity: ClientIP
