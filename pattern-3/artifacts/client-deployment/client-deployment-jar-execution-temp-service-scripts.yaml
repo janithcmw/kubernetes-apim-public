@@ -1,0 +1,28 @@
+# This is to connect to the GW pods with the session affinity service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-java-session-affinity-deployment
+  namespace: wso2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-java-execution-session-affinity
+  template:
+    metadata:
+      labels:
+        app: client-java-execution-session-affinity
+    spec:
+      containers:
+        - name: client-java-execution-session-affinity
+          image: ubuntu:latest
+          command: ["/bin/bash", "-c"]
+          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run java connection creation client' && cd /home/java-connection-client && java -jar TestHTTPSClient-1.0-jar-with-dependencies.jar config-session-affinity.properties"]
+          volumeMounts:
+            - name: clent-artifats-storage-volume
+              mountPath: "/home"
+      volumes:
+        - name: clent-artifats-storage-volume
+          persistentVolumeClaim:
+            claimName: clent-artifats-storage-volume-claim

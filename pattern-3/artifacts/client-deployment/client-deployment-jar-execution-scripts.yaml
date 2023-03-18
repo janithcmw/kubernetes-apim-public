@@ -8,14 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: client-jmeter
+      app: client-java-execution
   template:
     metadata:
       labels:
-        app: client-jmeter
+        app: client-java-execution
     spec:
       containers:
-        - name: client-jmeter
+        - name: client-java-execution
           image: ubuntu:latest
           command: ["/bin/bash", "-c"]
           args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run java connection creation client' && cd /home/java-connection-client && java -jar TestHTTPSClient-1.0-jar-with-dependencies.jar config.properties"]
