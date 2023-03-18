@@ -136,8 +136,23 @@ kubectl create  -f apim-km/wso2apim-km-deployment.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
 kubectl apply -f ingresses/wso2apim-ingress.yaml
 kubectl apply -f ingresses/wso2apim-tm-ingress.yaml
+
+#Backend ----------------------------------------------------------------------------------------
+# backend service yaml
+kubectl create -f backend-mi/backend-mi-service.yaml
+
 #backend yaml
 kubectl create -f backend-mi/backend-mi-pod.yaml
+
+#Client Pods----------------------------------------------------------------------------------------
+
+#client manage pvc
+kubectl create -f client-manage-pod/clent-artifats-storage-volume-claim.yaml
+#client manage pod
+kubectl create -f client-manage-pod/client-manage-pod.yaml
+
+#client jmeter pod
+kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
