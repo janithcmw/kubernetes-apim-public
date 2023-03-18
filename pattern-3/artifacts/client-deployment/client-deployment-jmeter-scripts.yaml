@@ -17,7 +17,7 @@ spec:
         - name: client-jmeter
           image: ubuntu:latest
           command: ["/bin/bash", "-c"]
-          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run Jmeter Scripts' && /home/apache-jmeter-4.0/bin/jmeter -n -t /home/jmeter-scripts/apiLoadSimulation.jmx -l /home/jmeter-results/apiLoadSimulation-results-$HOSTNAME.jtl"]
+          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run Jmeter Scripts' && /home/apache-jmeter-4.0/bin/jmeter -n -t /home/jmeter-scripts/HTTPSPostRequest.jmx -l /home/jmeter-results/HTTPSPostRequest-results-$HOSTNAME.jtl"]
           volumeMounts:
             - name: clent-artifats-storage-volume
               mountPath: "/home"
