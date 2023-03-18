@@ -8,7 +8,7 @@ spec:
   containers:
     - name: ubuntu-container
       image: ubuntu:latest
-      command: ["/bin/bash", "-c", "apt update && apt install -y ssh && while true; do sleep 3600; done"]
+      command: ["/bin/bash", "-c", "chmod -R 777 /home && while true; do sleep 3600; done"]
       volumeMounts:
         - name: apim-gw-log-storage-volume
           mountPath: "/home"
