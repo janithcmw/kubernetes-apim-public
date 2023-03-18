@@ -584,7 +584,7 @@
             <Password>${admin.password}</Password>
         </PolicyDeployer>
         <BlockCondition>
-            <Enabled>true</Enabled>
+            <Enabled>false</Enabled>
             <!--InitDelay>300000</InitDelay>
             <Period>3600000</Period-->
         </BlockCondition>
