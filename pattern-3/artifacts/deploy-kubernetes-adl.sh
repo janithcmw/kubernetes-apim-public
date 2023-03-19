@@ -99,6 +99,8 @@ kubectl create  -f apim-tm-stateful-adl/wso2apim-tm-stateful-log-storage-claim.y
 
 # Configuration deployment TODO need sleep?
 kubectl create  -f apim-tm-stateful-adl/wso2apim-tm-deployment.yaml
+kubectl create  -f apim-tm-stateful-adl/tm-log-monitoring-pod.yaml
+
 
 
 #Store-Pub
