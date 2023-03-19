@@ -1,0 +1,5 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--Out">
+    <log level="full">
+        <property name="Globle_Seq_log" value="This is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AM"/>
+    </log>
+</sequence>
