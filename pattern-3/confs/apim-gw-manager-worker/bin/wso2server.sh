@@ -269,7 +269,7 @@ status=$START_EXIT_STATUS
 
 if [ -z "$JVM_MEM_OPTS" ]; then
    java_version=$("$JAVACMD" -version 2>&1 | awk -F '"' '/version/ {print $2}')
-   JVM_MEM_OPTS="-Xms512m -Xmx6144m"
+   JVM_MEM_OPTS="-Xms512m -Xmx1024m"
    if [ "$java_version" \< "1.8" ]; then
       JVM_MEM_OPTS="$JVM_MEM_OPTS -XX:MaxPermSize=256m"
    fi
@@ -315,7 +315,6 @@ do
     -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
     -Dhttpclient.hostnameVerifier="AllowAll" \
-    -Damqj.heartbeat.delay=30 \
     -DworkerNode=false \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?

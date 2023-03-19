@@ -367,7 +367,7 @@ This file is ciphertool compliant. Refer PRODUCT_HOME/repository/conf/security/c
                                      sent but ack is not honoured.
             -->
             <topicMessageDeliveryStrategy>
-                <strategyName>DISCARD_ALLOWED</strategyName>
+                <strategyName>DISCARD_NONE</strategyName>
                 <!-- If you choose DISCARD_ALLOWED topic message delivery strategy,
                      broker keep messages in memory until ack is done until this timeout.
                      If an ack is not received under this timeout, ack will be simulated
