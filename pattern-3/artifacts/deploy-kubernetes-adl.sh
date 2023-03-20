@@ -163,6 +163,9 @@ kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 kubectl create -f client-deployment/client-deployment-jar-execution-scripts.yaml
 kubectl create -f client-deployment/client-deployment-jar-execution-temp-service-scripts.yaml
 
+
+---------------------------------- End of the Execution file, ignore the below commands --------------------------------------------------------------------
+
 #kubectl create  configmap apim-publisher-bin --from-file=../confs/apim-publisher/bin/
 #kubectl create  configmap apim-publisher-conf --from-file=../confs/apim-publisher/repository/conf/
 #kubectl create  configmap apim-publisher-identity --from-file=../confs/apim-publisher/repository/conf/identity/
@@ -185,60 +188,60 @@ kubectl create -f client-deployment/client-deployment-jar-execution-temp-service
 #kubectl create  configmap apim-tm2-conf --from-file=../confs/apim-tm-2/repository/conf/
 #kubectl create  configmap apim-tm2-identity --from-file=../confs/apim-tm-2/repository/conf/identity/
 
-echo 'deploying services and volume claims ...'
-kubectl create  -f apim-analytics/wso2apim-analytics-service.yaml
-kubectl create  -f apim-analytics/wso2apim-analytics-1-service.yaml
-kubectl create  -f apim-analytics/wso2apim-analytics-2-service.yaml
-
-kubectl create  -f apim-gateway/wso2apim-sv-service.yaml
-kubectl create  -f apim-gateway/wso2apim-pt-service.yaml
-kubectl create  -f apim-gateway/wso2apim-manager-worker-service.yaml
-
-kubectl create  -f apim-km/wso2apim-km-service.yaml
-kubectl create  -f apim-km/wso2apim-key-manager-service.yaml
-
-kubectl create  -f apim-publisher/wso2apim-publisher-local-service.yaml
-kubectl create  -f apim-publisher/wso2apim-publisher-service.yaml
-
-kubectl create  -f apim-store/wso2apim-store-local-service.yaml
-kubectl create  -f apim-store/wso2apim-store-service.yaml
-
-
-kubectl create  -f apim-publisher/wso2apim-publisher-volume-claim.yaml
-kubectl create  -f apim-store/wso2apim-store-volume-claim.yaml
-kubectl create  -f apim-gateway/wso2apim-mgt-volume-claim.yaml
-kubectl create  -f apim-tm/wso2apim-tm-1-volume-claim.yaml
-
-sleep 30s
-# analytics
-echo 'deploying apim analytics ...'
-kubectl create  -f apim-analytics/wso2apim-analytics-1-deployment.yaml
-sleep 10s
-kubectl create  -f apim-analytics/wso2apim-analytics-2-deployment.yaml
-
-# apim
-sleep 30s
-echo 'deploying apim traffic manager ...'
-kubectl create  -f apim-tm/wso2apim-tm-1-deployment.yaml
-kubectl create  -f apim-tm/wso2apim-tm-2-deployment.yaml
-
-echo 'deploying apim key manager...'
-kubectl create  -f apim-km/wso2apim-km-deployment.yaml
-
-sleep 1m
-echo 'deploying apim publisher ...'
-kubectl create  -f apim-publisher/wso2apim-publisher-deployment.yaml
-
-sleep 30s
-echo 'deploying apim store...'
-kubectl create  -f apim-store/wso2apim-store-deployment.yaml
-
-sleep 30s
-echo 'deploying apim manager-worker ...'
-kubectl create  -f apim-gateway/wso2apim-manager-worker-deployment.yaml
-
-echo 'deploying wso2apim and wso2apim-analytics ingress resources ...'
-kubectl create -f ingresses/nginx-default-http-backend.yaml
-kubectl create -f ingresses/nginx-ingress-controller.yaml
-kubectl create -f ingresses/wso2apim-analytics-ingress.yaml
-kubectl create -f ingresses/wso2apim-ingress.yaml
+#echo 'deploying services and volume claims ...'
+#kubectl create  -f apim-analytics/wso2apim-analytics-service.yaml
+#kubectl create  -f apim-analytics/wso2apim-analytics-1-service.yaml
+#kubectl create  -f apim-analytics/wso2apim-analytics-2-service.yaml
+#
+#kubectl create  -f apim-gateway/wso2apim-sv-service.yaml
+#kubectl create  -f apim-gateway/wso2apim-pt-service.yaml
+#kubectl create  -f apim-gateway/wso2apim-manager-worker-service.yaml
+#
+#kubectl create  -f apim-km/wso2apim-km-service.yaml
+#kubectl create  -f apim-km/wso2apim-key-manager-service.yaml
+#
+#kubectl create  -f apim-publisher/wso2apim-publisher-local-service.yaml
+#kubectl create  -f apim-publisher/wso2apim-publisher-service.yaml
+#
+#kubectl create  -f apim-store/wso2apim-store-local-service.yaml
+#kubectl create  -f apim-store/wso2apim-store-service.yaml
+#
+#
+#kubectl create  -f apim-publisher/wso2apim-publisher-volume-claim.yaml
+#kubectl create  -f apim-store/wso2apim-store-volume-claim.yaml
+#kubectl create  -f apim-gateway/wso2apim-mgt-volume-claim.yaml
+#kubectl create  -f apim-tm/wso2apim-tm-1-volume-claim.yaml
+#
+#sleep 30s
+## analytics
+#echo 'deploying apim analytics ...'
+#kubectl create  -f apim-analytics/wso2apim-analytics-1-deployment.yaml
+#sleep 10s
+#kubectl create  -f apim-analytics/wso2apim-analytics-2-deployment.yaml
+#
+## apim
+#sleep 30s
+#echo 'deploying apim traffic manager ...'
+#kubectl create  -f apim-tm/wso2apim-tm-1-deployment.yaml
+#kubectl create  -f apim-tm/wso2apim-tm-2-deployment.yaml
+#
+#echo 'deploying apim key manager...'
+#kubectl create  -f apim-km/wso2apim-km-deployment.yaml
+#
+#sleep 1m
+#echo 'deploying apim publisher ...'
+#kubectl create  -f apim-publisher/wso2apim-publisher-deployment.yaml
+#
+#sleep 30s
+#echo 'deploying apim store...'
+#kubectl create  -f apim-store/wso2apim-store-deployment.yaml
+#
+#sleep 30s
+#echo 'deploying apim manager-worker ...'
+#kubectl create  -f apim-gateway/wso2apim-manager-worker-deployment.yaml
+#
+#echo 'deploying wso2apim and wso2apim-analytics ingress resources ...'
+#kubectl create -f ingresses/nginx-default-http-backend.yaml
+#kubectl create -f ingresses/nginx-ingress-controller.yaml
+#kubectl create -f ingresses/wso2apim-analytics-ingress.yaml
+#kubectl create -f ingresses/wso2apim-ingress.yaml
