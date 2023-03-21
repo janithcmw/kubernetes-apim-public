@@ -80,7 +80,7 @@ kubectl create  -f apim-gateway/gw-log-monitoring-pod.yaml
 
 ## Low-memory Deployment of GW
 # Configuration Maps
-kubectl create  configmap apim-gw-manager-worker-bin --from-file=../confs/apim-gw-manager-worker/bin-low-memory/
+kubectl create  configmap apim-gw-manager-worker-low-memory-bin --from-file=../confs/apim-gw-manager-worker/bin-low-memory/
 
 # Configuration deployment TODO need sleep?
 kubectl create  -f apim-gateway/wso2apim-manager-worker-low-memory-deployment.yaml
