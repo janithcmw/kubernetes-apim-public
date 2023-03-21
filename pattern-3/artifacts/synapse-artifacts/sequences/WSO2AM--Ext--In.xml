@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--In">
+    <property name="REQUEST_TIMESTAMP" expression="get-property('SYSTEM_TIME')" scope="default" type="STRING" />
+    <property name="MESSAGE_ID" expression="get-property('MessageID')" scope="default" type="STRING" />
+    <!-- class name="com.wso2telco.dep.gateway.in.custom.mediation.Main"/ -->
+    <!-- Values log level = full; enable payload loggin. log level=custom; disable payload loggin for the request -->
+    <log level="custom">
+        <property name="API Request URL" expression="get-property('To')" />
+        <property name="Request ID" expression="$ctx:MESSAGE_ID" />
+    </log>
+    <property name="message.type" value="request" scope="axis2" type="STRING" />
+    <class name="com.wso2telco.logging.PropertyLogHandler" />
+    <property name="DECODE_MULTIPART_DATA" value="true" scope="axis2" type="BOOLEAN" />
+</sequence>

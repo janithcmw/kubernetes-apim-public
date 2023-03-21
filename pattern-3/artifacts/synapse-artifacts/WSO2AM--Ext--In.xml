@@ -1,5 +1,0 @@
-<sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--In">
-    <log level="custom">
-        <property name="Globle_Seq_in_log" value="This is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AM"/>
-    </log>
-</sequence>

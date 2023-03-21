@@ -51,6 +51,9 @@ kubectl create  -f rdbms/rdbms-deployment.yaml
 # connector jar
 kubectl create configmap db-connector-jar --from-file=../../../mysql-connector-java-5.1.47.jar
 
+#custom log jar
+kubectl create configmap mounting-custom-log-jar --from-file=../../../mysql-connector-java-5.1.47.jar
+
 # custom logging jarfile.
 #kubectl create configmap custom-logging-jar --from-file=../../../logging-extension-2.0.2-xl.jar not needed
 

@@ -93,6 +93,11 @@ data:
           cp -RL ${k8s_volumes}/${wso2_server_profile}/mounting-jar/* ${WSO2_SERVER_HOME}/repository/components/lib
       fi
 
+      # to add custom logging jar
+      if test -d ${k8s_volumes}/${wso2_server_profile}/mounting-log-jar; then
+          cp -RL ${k8s_volumes}/${wso2_server_profile}/mounting-log-jar/* ${WSO2_SERVER_HOME}/repository/components/lib
+      fi
+      
       # copy configuration changes and external libraries
 
       # check if any changed configuration files have been mounted

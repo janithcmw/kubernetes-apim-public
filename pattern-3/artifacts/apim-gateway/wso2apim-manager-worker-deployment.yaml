@@ -100,6 +100,8 @@ spec:
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
         - name: db-connector-jar
           mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
+        - name: mounting-custom-log-jar
+          mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-log-jar"
         - name: apim-conf-entrypoint
           mountPath: "/home/wso2carbon/docker-entrypoint.sh"
           subPath: docker-entrypoint.sh
@@ -132,6 +134,9 @@ spec:
       - name: db-connector-jar
         configMap:
           name: db-connector-jar
+      - name: mounting-custom-log-jar
+        configMap:
+          name: mounting-custom-log-jar
       - name: apim-conf-entrypoint
         configMap:
           name: apim-conf-entrypoint
