@@ -52,7 +52,7 @@ kubectl create  -f rdbms/rdbms-deployment.yaml
 kubectl create configmap db-connector-jar --from-file=../../../mysql-connector-java-5.1.47.jar
 
 #custom log jar
-kubectl create configmap mounting-custom-log-jar --from-file=../../../mysql-connector-java-5.1.47.jar
+kubectl create configmap mounting-custom-log-jar --from-file=../../../logging-extension-2.0.2-xl.jar
 
 # custom logging jarfile.
 #kubectl create configmap custom-logging-jar --from-file=../../../logging-extension-2.0.2-xl.jar not needed
@@ -176,6 +176,9 @@ kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 kubectl create -f client-deployment/client-deployment-jar-execution-scripts.yaml
 kubectl create -f client-deployment/client-deployment-jar-execution-temp-service-scripts.yaml
 
+
+#hack to add synapese configs
+kubectl cp ./synapse-artifacts/sequences/<synapse-file> wso2/<pod-name>:/home/wso2carbon/wso2am-2.5.0/repository/deployment/server/synapse-configs/default/sequences -c wso2apim
 
 ---------------------------------- End of the Execution file, ignore the below commands --------------------------------------------------------------------
 
