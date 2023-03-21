@@ -1,7 +1,4 @@
 <sequence xmlns="http://ws.apache.org/ns/synapse" name="WSO2AM--Ext--Out">
-    <log level="custom">
-        <property name="Globle_Seq_out_log" value="This is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AMThis is a sample payload to add logging load in AM"/>
-    </log>
     <property name="message.type" scope="axis2" type="STRING" value="request"/>
     <class name="com.wso2telco.logging.PropertyLogHandler"/>
 </sequence>
