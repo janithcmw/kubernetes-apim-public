@@ -22,7 +22,7 @@ metadata:
     node: manager-worker
     pattern: wso2apim-pattern-3
 spec:
-  replicas: 3
+  replicas: 4
   strategy:
     type: Recreate
   selector:
