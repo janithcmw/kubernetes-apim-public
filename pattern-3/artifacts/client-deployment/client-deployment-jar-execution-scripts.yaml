@@ -17,6 +17,13 @@ spec:
       containers:
         - name: client-java-execution
           image: ubuntu:latest
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "4"
+            limits:
+              memory: "4Gi"
+              cpu: "4"
           command: ["/bin/bash", "-c"]
           args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run java connection creation client' && cd /home/java-connection-client && java -jar TestHTTPSClient-1.0-jar-with-dependencies.jar config.properties"]
           volumeMounts:
