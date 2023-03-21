@@ -18,7 +18,7 @@ metadata:
   name: backend-mi
   namespace: wso2
   labels:
-    app: backend-mi-pod
+    app: backend-mi-deployment
 spec:
   ports:
     # ports that this service should serve on
@@ -32,5 +32,5 @@ spec:
       port: 8253
   # label keys and values that must match in order to receive traffic for this service
   selector:
-    app: backend-mi-pod
+    app: backend-mi-deployment
   sessionAffinity: ClientIP
