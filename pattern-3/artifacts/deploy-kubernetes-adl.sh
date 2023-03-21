@@ -164,7 +164,9 @@ kubectl create -f client-manage-pod/clent-artifats-storage-volume-claim.yaml
 #client manage pod
 kubectl create -f client-manage-pod/client-manage-pod.yaml
 
-#client jmeter pod
+#client jmeter client pod
+kubectl create  configmap clent-host-configuration --from-file=../confs/client-deployment
+
 kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 
 #client java client pod

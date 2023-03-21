@@ -28,7 +28,12 @@ spec:
           volumeMounts:
             - name: clent-artifats-storage-volume
               mountPath: "/home"
+            - name: clent-host-configuration
+              mountPath: "/etc/hosts"
       volumes:
         - name: clent-artifats-storage-volume
           persistentVolumeClaim:
             claimName: clent-artifats-storage-volume-claim
+        - name: clent-host-configuration
+          configMap:
+            name: clent-host-configuration
