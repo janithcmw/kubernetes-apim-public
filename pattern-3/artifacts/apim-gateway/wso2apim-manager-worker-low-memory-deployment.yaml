@@ -15,7 +15,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wso2apim-manager-worker
+  name: wso2apim-manager-worker-low-memory
   namespace: wso2
   labels:
     app: wso2apim-gw
