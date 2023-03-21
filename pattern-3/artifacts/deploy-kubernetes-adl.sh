@@ -155,7 +155,7 @@ kubectl apply -f ingresses/wso2apim-tm-ingress.yaml
 kubectl create -f backend-mi/backend-mi-service.yaml
 
 #backend yaml
-kubectl create -f backend-mi/backend-mi-pod.yaml
+kubectl create -f backend-mi/backend-mi-deployment.yaml
 
 #Client Pods----------------------------------------------------------------------------------------
 
