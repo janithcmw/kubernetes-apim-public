@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-jmeter-deployment
+  name: client-jmeter-deployment-tmp
   namespace: wso2
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: client-jmeter
