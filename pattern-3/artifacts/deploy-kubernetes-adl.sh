@@ -94,6 +94,7 @@ kubectl create  -f apim-gateway/wso2apim-manager-worker-low-memory-deployment.ya
 kubectl create  configmap apim-tm-stateful-bin --from-file=../confs/apim-tm-stateful/bin/
 kubectl create  configmap apim-tm-stateful-conf --from-file=../confs/apim-tm-stateful/repository/conf/
 kubectl create  configmap apim-tm-stateful-identity --from-file=../confs/apim-tm-stateful/repository/conf/identity/
+kubectl create  configmap apim-tm-stateful-conf-tomcat --from-file=../confs/apim-tm-stateful/repository/conf/tomcat/
 #TODO this config map name should be refactored
 kubectl create  configmap apim-tm-stateful-identity-datasources --from-file=../confs/apim-gw-manager-worker/repository/conf/datasources/
 kubectl create  configmap apim-tm-stateful-conf-advanced-qpid --from-file=../confs/apim-tm-stateful/repository/conf/advanced/

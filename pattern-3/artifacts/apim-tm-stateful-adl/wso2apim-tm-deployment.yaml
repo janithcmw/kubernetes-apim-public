@@ -97,6 +97,8 @@ spec:
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-datasources/"
             - name: apim-tm-stateful-conf-advanced-qpid
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-advanced-qpid/"
+            - name: apim-tm-stateful-conf-tomcat
+              mountPath: "/home/wso2carbon/kubernetes-volumes/am/conf-tomcat/"
             - name: db-connector-jar
               mountPath: "/home/wso2carbon/kubernetes-volumes/am/mounting-jar"
             - name: apim-conf-entrypoint
@@ -125,6 +127,9 @@ spec:
         - name: apim-tm-stateful-conf-advanced-qpid
           configMap:
             name: apim-tm-stateful-conf-advanced-qpid
+        - name: apim-tm-stateful-conf-tomcat
+          configMap:
+            name: apim-tm-stateful-conf-tomcat
         - name: db-connector-jar
           configMap:
             name: db-connector-jar
