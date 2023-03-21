@@ -88,6 +88,10 @@ data:
           cp -RL ${k8s_volumes}/${wso2_server_profile}/conf-advanced-qpid/* ${WSO2_SERVER_HOME}/repository/conf/advanced
       fi
       
+       if test -d ${k8s_volumes}/${wso2_server_profile}/conf-tomcat; then
+          cp -RL ${k8s_volumes}/${wso2_server_profile}/conf-tomcat/* ${WSO2_SERVER_HOME}/repository/conf/tomcat
+      fi
+      
       # to add db connector jar
       if test -d ${k8s_volumes}/${wso2_server_profile}/mounting-jar; then
           cp -RL ${k8s_volumes}/${wso2_server_profile}/mounting-jar/* ${WSO2_SERVER_HOME}/repository/components/lib
