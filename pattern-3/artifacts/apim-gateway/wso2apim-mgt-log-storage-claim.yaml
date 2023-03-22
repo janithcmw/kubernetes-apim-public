@@ -21,7 +21,7 @@ metadata:
     app: apim-gateway
     pattern: wso2apim-pattern-3
 spec:
-  storageClassName: "azurefile-csi"
+  storageClassName: "azurefile-csi-premium"
   accessModes:
     - ReadWriteMany
   resources:

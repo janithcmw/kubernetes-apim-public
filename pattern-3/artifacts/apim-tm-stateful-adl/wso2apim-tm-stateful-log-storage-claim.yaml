@@ -22,7 +22,7 @@ metadata:
     node: tm-stateful
     deployment: wso2apim-pattern-3-am-tm-stateful
 spec:
-  storageClassName: "azurefile-csi"
+  storageClassName: "azurefile-csi-premium"
   accessModes:
     - ReadWriteMany
   resources:

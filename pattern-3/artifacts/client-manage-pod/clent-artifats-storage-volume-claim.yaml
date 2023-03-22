@@ -7,7 +7,7 @@ metadata:
     app:  client
     tier: runClients
 spec:
-  storageClassName: "azurefile-csi"
+  storageClassName: "azurefile-csi-premium"
   accessModes:
     - ReadWriteMany
   resources:
