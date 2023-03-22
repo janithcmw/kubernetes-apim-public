@@ -7,9 +7,9 @@ metadata:
     app:  client
     tier: runClients
 spec:
-  storageClassName: "nfs"
+  storageClassName: "azurefile-csi"
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Gi
+      storage: 20Gi

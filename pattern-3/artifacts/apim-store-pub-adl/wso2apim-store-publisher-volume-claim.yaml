@@ -20,7 +20,7 @@ metadata:
     app: apim-store-publisher
     pattern: wso2apim-pattern-3
 spec:
-  storageClassName: "nfs"
+  storageClassName: "azurefile-csi"
   accessModes:
     - ReadWriteMany
   resources:

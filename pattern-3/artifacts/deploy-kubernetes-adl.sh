@@ -32,6 +32,9 @@ helm install wso2-nfs-server-provisioner wso2/nfs-server-provisioner --version 1
 #uninstall nfs
 helm uninstall wso2-nfs-server-provisioner
 
+# to delete gracefully.
+--grace-period=0 --force
+
 # volumes
 #kubectl create  -f volumes/persistent-volumes.yamlx  #not needed.
 
