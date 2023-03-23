@@ -8,11 +8,16 @@ spec:
   containers:
     - name: ubuntu-container
       image: ubuntu:latest
-      command: ["/bin/bash", "-c", "apt update && apt install -y ssh && while true; do sleep 3600; done"]
+      command: ["/bin/bash", "-c", "apt update && apt install -y ssh && cd /home && echo 'Downloading Jmeter-4' && wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.zip && echo 'Install unzip' && apt install unzip && unzip apache-jmeter-4.0.zip && echo 'Removing the Jmeter zip file' && rm apache-jmeter-4.0.zip && echo 'Creating directory structure' && mkdir java-connection-client && mkdir jmeter-scripts && mkdir jmeter-results && cd jmeter-results && mkdir nohupOutput && while true; do sleep 3600; done"]
       volumeMounts:
         - name: clent-artifats-storage-volume
           mountPath: "/home"
+        - name: jmeter-scripts-files-volume
+          mountPath: "/home/jmeter-scripts"
   volumes:
     - name: clent-artifats-storage-volume
       persistentVolumeClaim:
         claimName: clent-artifats-storage-volume-claim
+    - name: jmeter-scripts-files-volume
+      configMap:
+        name: jmeter-scripts-files

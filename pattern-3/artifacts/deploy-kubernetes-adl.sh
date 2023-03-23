@@ -173,6 +173,8 @@ kubectl create -f client-manage-pod/client-manage-pod.yaml
 
 #client jmeter client pod
 kubectl create  configmap clent-host-configuration --from-file=../confs/client-deployment
+kubectl create  configmap jmeter-scripts-files --from-file=../confs/client-deployment/jmeter-scripts
+
 
 kubectl create -f client-deployment/client-deployment-jmeter-scripts.yaml
 
