@@ -31,6 +31,8 @@ spec:
             - name: clent-host-configuration
               mountPath: "/etc/hosts"
               subPath: hosts
+            - name: jmeter-scripts-files-volume
+              mountPath: "/home/jmeter-scripts"
       volumes:
         - name: clent-artifats-storage-volume
           persistentVolumeClaim:
@@ -38,3 +40,6 @@ spec:
         - name: clent-host-configuration
           configMap:
             name: clent-host-configuration
+        - name: jmeter-scripts-files-volume
+          configMap:
+            name: jmeter-scripts-files
