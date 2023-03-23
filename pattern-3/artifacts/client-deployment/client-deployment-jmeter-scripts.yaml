@@ -18,10 +18,10 @@ spec:
           image: ubuntu:latest
           resources:
             requests:
-              memory: "4Gi"
+              memory: "8Gi"
               cpu: "4"
             limits:
-              memory: "4Gi"
+              memory: "8Gi"
               cpu: "4"
           command: ["/bin/bash", "-c"]
           args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run Jmeter Scripts' && nohup sh /home/apache-jmeter-4.0/bin/jmeter -n -t /home/jmeter-scripts/HTTPSGetRequest.jmx -l /home/jmeter-results/HTTPSGetRequest-results-$HOSTNAME.jtl >> /home/jmeter-results/nohupOutput/HTTPSGetRequest-results-$HOSTNAME-nohupOut.out"]
