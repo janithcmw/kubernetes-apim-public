@@ -121,6 +121,12 @@ spec:
             {{ end }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/lib
+            - name: am-cp-log-storage-volume
+              mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
+            - name: am-cp-log4j2-conf
+              mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
+            - name: am-cp-bin
+              mountPath: /home/wso2carbon/wso2-config-volume/bin
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
       imagePullSecrets:
@@ -147,3 +153,12 @@ spec:
         {{ end }}
         - name: db-connector-jar
           emptyDir: {}
+        - name: am-cp-log-storage-volume
+          persistentVolumeClaim:
+            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-cp-log-storage-volume-claim
+        - name: am-cp-log4j2-conf
+          configMap:
+            name: { { template "am-pattern-4.resource.prefix" . } }-am-cp-log4j2
+        - name: am-cp-bin
+          configMap:
+            name: { { template "am-pattern-4.resource.prefix" . } }-am-cp-bin
