@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "am-pattern-4.resource.prefix" . }}-am-redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-redis
+  template:
+    metadata:
+      labels:
+        deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.0
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: am-redis-storage-volume
+              mountPath: /data
+      volumes:
+        - name: am-redis-storage-volume
+          persistentVolumeClaim:
+            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-redis-storage-volume-claim
