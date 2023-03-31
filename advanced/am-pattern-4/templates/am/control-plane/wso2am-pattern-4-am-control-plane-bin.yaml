@@ -18,7 +18,7 @@ metadata:
   name: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-bin
   namespace : {{ .Release.Namespace }}
 data:
-  deployment.toml: |-
+  api-manager.sh: |-
     #!/bin/sh
     # ----------------------------------------------------------------------------
     #  Copyright 2005-2012 WSO2, Inc. http://www.wso2.org
