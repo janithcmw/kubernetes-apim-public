@@ -150,6 +150,10 @@ data:
 
     [transport.passthru_https.sender.parameters]
     HostnameVerifier = "AllowAll"
+    
+    [http_access_log]
+    useLogger = false
+    prefix = "${instance.log}_http_access"
 
   log4j2.properties: |-
     # list of all appenders
