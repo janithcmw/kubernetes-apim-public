@@ -90,6 +90,10 @@ spec:
           volumeMounts:
             - name: wso2am-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
+            - name: am-trafficmanager-bin
+              mountPath: /home/wso2carbon/wso2-config-volume/bin
+            - name: am-trafficmanager-log-storage-volume
+              mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
       imagePullSecrets:
@@ -102,6 +106,12 @@ spec:
         - name: wso2am-conf
           configMap:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-1-conf
+        - name: am-trafficmanager-bin
+          configMap:
+            name: { { template "am-pattern-4.resource.prefix" . } }-am-trafficmanager-bin
+        - name: am-trafficmanager-log-storage-volume
+          persistentVolumeClaim:
+            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-trafficmanager-log-storage-volume-claim
         - name: wso2am-conf-entrypoint
           configMap:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-conf-entrypoint
