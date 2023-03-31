@@ -63,47 +63,6 @@ wso2:
       # Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
       imagePullPolicy: Always
 
-      resources:
-        # These are the resource recommendations for running WSO2 API Management product profiles with profile optimization
-        # Resource configurations defined here are applicable for all API Manager product profiles of this deployment
-        requests:
-          memory: "1Gi"
-          cpu: "1000m"
-        limits:
-          memory: "2Gi"
-          cpu: "2000m"
-        # JVM settings
-        # These are the resource allocation configurations associated with the JVM
-        # Refer to the official documentation for advanced details (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
-        jvm:
-          # Resource allocation for the Java Heap
-          heap:
-            memory:
-              # Initial and minimum Heap size
-              xms: "512m"
-              # Maximum Heap size
-              xmx: "512m"
-
-      # Kubernetes Probes
-      # Startup probe executed prior to Liveness Probe taking over
-      startupProbe:
-        # Number of seconds after the container has started before startup probes are initiated
-        initialDelaySeconds: 45
-        # How often (in seconds) to perform the probe
-        periodSeconds: 5
-        # Number of attempts
-        failureThreshold: 8
-      # Indicates whether the container is running
-      livenessProbe:
-        # How often (in seconds) to perform the probe
-        periodSeconds: 10
-        # Indicates whether the container is ready to service requests
-      readinessProbe:
-        # Number of seconds after the container has started before readiness probes are initiated
-        initialDelaySeconds: 50
-        # How often (in seconds) to perform the probe
-        periodSeconds: 10
-
       # API Manager's WebSub specific configurations
       websub:
         # Configure Ingress
@@ -134,6 +93,47 @@ wso2:
 
       # API Manager's Gateway specific configurations
       gateway:
+        resources:
+          # These are the resource recommendations for running WSO2 API Management product profiles with profile optimization
+          # Resource configurations defined here are applicable for all API Manager product profiles of this deployment
+          requests:
+            memory: "8Gi"
+            cpu: "4000m"
+          limits:
+            memory: "8Gi"
+            cpu: "4000m"
+          # JVM settings
+          # These are the resource allocation configurations associated with the JVM
+          # Refer to the official documentation for advanced details (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
+          jvm:
+            # Resource allocation for the Java Heap
+            heap:
+              memory:
+                # Initial and minimum Heap size
+                xms: "512m"
+                # Maximum Heap size
+                xmx: "4096m"
+
+        # Kubernetes Probes
+        # Startup probe executed prior to Liveness Probe taking over
+        startupProbe:
+          # Number of seconds after the container has started before startup probes are initiated
+          initialDelaySeconds: 45
+          # How often (in seconds) to perform the probe
+          periodSeconds: 5
+          # Number of attempts
+          failureThreshold: 8
+        # Indicates whether the container is running
+        livenessProbe:
+          # How often (in seconds) to perform the probe
+          periodSeconds: 10
+          # Indicates whether the container is ready to service requests
+        readinessProbe:
+          # Number of seconds after the container has started before readiness probes are initiated
+          initialDelaySeconds: 50
+          # How often (in seconds) to perform the probe
+          periodSeconds: 10
+
         # Configure Ingress
         ingress:
           enabled: true
@@ -183,11 +183,11 @@ wso2:
            # These are the minimum resource recommendations for running WSO2 API Management Control Plane deployment
            # as per official documentation (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
            requests:
-             memory: "2Gi"
-             cpu: "2000m"
+             memory: "4Gi"
+             cpu: "4000m"
            limits:
-             memory: "3Gi"
-             cpu: "3000m"
+             memory: "4Gi"
+             cpu: "4000m"
            # JVM settings
            # These are the resource allocation configurations associated with the JVM
            # Refer to the official documentation for advanced details (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
@@ -198,7 +198,7 @@ wso2:
                 # Initial and minimum Heap size
                   xms: "1024m"
                   # Maximum Heap size
-                  xmx: "1024m"
+                  xmx: "4096m"
 
         # If the deployment configurations for the Gateway profile of WSO2 API Manager v4.0.0 (<WSO2AM>/repository/conf/deployment.toml),
         # add the customized configuration file under (wso2 -> deployment -> am -> gateway -> config -> deployment.toml)
@@ -263,11 +263,11 @@ wso2:
           # These are the minimum resource recommendations for running WSO2 API Management Control Plane deployment
           # as per official documentation (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
           requests:
-            memory: "2Gi"
-            cpu: "2000m"
+            memory: "4Gi"
+            cpu: "4000m"
           limits:
-            memory: "3Gi"
-            cpu: "3000m"
+            memory: "4Gi"
+            cpu: "4000m"
           # JVM settings
           # These are the resource allocation configurations associated with the JVM
           # Refer to the official documentation for advanced details (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
@@ -278,7 +278,7 @@ wso2:
                 # Initial and minimum Heap size
                 xms: "1024m"
                 # Maximum Heap size
-                xmx: "1024m"
+                xmx: "4096m"
 
         # config:
         #   deployment.toml: |-

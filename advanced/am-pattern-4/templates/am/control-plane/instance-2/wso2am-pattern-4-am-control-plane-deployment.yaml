@@ -106,7 +106,7 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             - name: JVM_MEM_OPTS
-              value: "-Xms{{ .Values.wso2.deployment.am.resources.jvm.heap.memory.xms }} -Xmx{{ .Values.wso2.deployment.am.resources.jvm.heap.memory.xmx }}"
+              value: "-Xms{{ .Values.wso2.deployment.am.cp.resources.jvm.heap.memory.xms }} -Xmx{{ .Values.wso2.deployment.am.cp.resources.jvm.heap.memory.xmx }}"
           volumeMounts:
             - name: wso2am-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
