@@ -129,3 +129,4 @@ spec:
       - name: am-gateway-etc-host
         configMap:
           name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-etc-host
+          defaultMode: 0777
