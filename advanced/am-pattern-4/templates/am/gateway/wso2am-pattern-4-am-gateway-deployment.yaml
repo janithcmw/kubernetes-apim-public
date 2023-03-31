@@ -105,6 +105,9 @@ spec:
           mountPath: /home/wso2carbon/wso2-config-volume/bin
         - name: am-gateway-log-storage-volume
           mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
+        - name: am-gateway-etc-host
+          mountPath: /etc/hosts
+          subPath: hosts
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
       imagePullSecrets:
@@ -123,3 +126,6 @@ spec:
       - name: am-gateway-log-storage-volume
         persistentVolumeClaim:
           claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-log-storage-volume-claim
+      - name: am-gateway-etc-host
+        configMap:
+          name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-etc-host
