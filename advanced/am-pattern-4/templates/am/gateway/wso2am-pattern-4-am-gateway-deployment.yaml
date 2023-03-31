@@ -42,6 +42,14 @@ spec:
         - name: init-tm2
           image: busybox:1.32
           command: [ 'sh', '-c', 'echo -e "Checking for the availability of Traffic Manager Instance Two deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2-service 9611; do sleep 1; printf "-"; done; echo -e "  >> Traffic Manager Instance Two has started";' ]
+      hostAliases:
+        - ip: "20.197.113.209"
+          hostnames:
+            - "am.wso2.com"
+            - "gateway.am.wso2.com"
+            - "websocket.am.wso2.com"
+            - "websub.am.wso2.com"
+            - "management.mi.wso2.com"
       containers:
       - name: wso2am-gateway
 {{- include "image" (dict "Values" .Values "deployment" .Values.wso2.deployment.am) | indent 8 }}
@@ -105,9 +113,6 @@ spec:
           mountPath: /home/wso2carbon/wso2-config-volume/bin
         - name: am-gateway-log-storage-volume
           mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
-        - name: am-gateway-etc-host
-          mountPath: /etc/hosts
-          subPath: hosts
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
       imagePullSecrets:
@@ -126,7 +131,3 @@ spec:
       - name: am-gateway-log-storage-volume
         persistentVolumeClaim:
           claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-log-storage-volume-claim
-      - name: am-gateway-etc-host
-        configMap:
-          name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-etc-host
-          defaultMode: 0777
