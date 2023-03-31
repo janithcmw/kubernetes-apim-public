@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "am-pattern-4.resource.prefix" . }}-am-redis-deployment
+  namespace : {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
