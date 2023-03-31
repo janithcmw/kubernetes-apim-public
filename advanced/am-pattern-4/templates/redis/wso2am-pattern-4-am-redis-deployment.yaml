@@ -23,4 +23,4 @@ spec:
       volumes:
         - name: am-redis-storage-volume
           persistentVolumeClaim:
-            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-redis-storage-volume-claim
+            claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-redis-storage-volume-claim
