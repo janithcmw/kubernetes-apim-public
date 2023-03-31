@@ -108,10 +108,10 @@ spec:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2-conf
         - name: am-trafficmanager-bin
           configMap:
-            name: { { template "am-pattern-4.resource.prefix" . } }-am-trafficmanager-bin
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-bin
         - name: am-trafficmanager-log-storage-volume
           persistentVolumeClaim:
-            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-trafficmanager-log-storage-volume-claim
+            claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-log-storage-volume-claim
         - name: wso2am-conf-entrypoint
           configMap:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-conf-entrypoint
