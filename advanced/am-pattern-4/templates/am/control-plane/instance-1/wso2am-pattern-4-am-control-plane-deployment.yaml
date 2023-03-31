@@ -161,4 +161,4 @@ spec:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-log4j2
         - name: am-cp-bin
           configMap:
-            name: { { template "am-pattern-4.resource.prefix" . } }-am-cp-bin
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-bin

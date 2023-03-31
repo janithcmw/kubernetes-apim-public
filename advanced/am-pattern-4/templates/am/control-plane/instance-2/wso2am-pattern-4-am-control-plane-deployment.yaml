@@ -155,10 +155,10 @@ spec:
           emptyDir: {}
         - name: am-cp-log-storage-volume
           persistentVolumeClaim:
-            claimName: { { template "am-pattern-4.resource.prefix" . } }-am-cp-log-storage-volume-claim
+            claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-log-storage-volume-claim
         - name: am-cp-log4j2-conf
           configMap:
-            name: { { template "am-pattern-4.resource.prefix" . } }-am-cp-log4j2
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-log4j2
         - name: am-cp-bin
           configMap:
-            name: { { template "am-pattern-4.resource.prefix" . } }-am-cp-bin
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-cp-bin
