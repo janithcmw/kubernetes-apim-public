@@ -700,8 +700,8 @@ data:
     # bot detection feature appender
     appender.BOTDATA_APPENDER.type = RollingFile
     appender.BOTDATA_APPENDER.name = BOTDATA_APPENDER
-    appender.BOTDATA_APPENDER.fileName = ${sys:carbon.home}/repository/logs/wso2-BotDetectedData.log
-    appender.BOTDATA_APPENDER.filePattern = ${sys:carbon.home}/repository/logs/wso2-BotDetectedData-%d{MM-dd-yyyy}.log
+    appender.BOTDATA_APPENDER.fileName = ${sys:carbon.home}/repository/logs/${sys:instance.log}-wso2-BotDetectedData.log
+    appender.BOTDATA_APPENDER.filePattern = ${sys:carbon.home}/repository/logs/${sys:instance.log}-wso2-BotDetectedData-%d{MM-dd-yyyy}.log
     appender.BOTDATA_APPENDER.layout.type = PatternLayout
     appender.BOTDATA_APPENDER.layout.pattern = [%d] [%tenantId] %5p {%c} - %m%ex%n
     appender.BOTDATA_APPENDER.policies.type = Policies
