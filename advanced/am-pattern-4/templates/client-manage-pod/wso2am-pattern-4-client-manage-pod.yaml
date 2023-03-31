@@ -1,0 +1,23 @@
+# This pod will be used to manage the artifacts in the mounted location.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ template "am-pattern-4.resource.prefix" . }}-client-manage-pod
+  namespace : {{ .Release.Namespace }}
+spec:
+  containers:
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["/bin/bash", "-c", "apt update && apt install -y ssh && cd /home && if test -d '/home/apache-jmeter-4.0'; then echo 'Jmeter is available'; else echo 'Downloading Jmeter-4'; wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.zip; echo 'Install unzip'; apt install unzip; unzip apache-jmeter-4.0.zip; echo 'Removing the Jmeter zip file'; rm apache-jmeter-4.0.zip; fi && if test -d '/home/jmeter-results'; then echo 'Creating directory structure is not needed'; else echo 'Creating directory structure'; mkdir java-connection-client; mkdir jmeter-results; cd jmeter-results; mkdir nohupOutput; fi && while true; do sleep 3600; done"]
+      volumeMounts:
+        - name: client-artifacts-storage-volume
+          mountPath: "/home"
+        - name: jmeter-scripts-files
+          mountPath: "/home/jmeter-scripts"
+  volumes:
+    - name: client-artifacts-storage-volume
+      persistentVolumeClaim:
+        claimName: {{ template "am-pattern-4.resource.prefix" . }}-client-manage-pod-artifacts-storage-volume-claim
+    - name: jmeter-scripts-files
+      configMap:
+        name: {{ template "am-pattern-4.resource.prefix" . }}-jmeter-scripts-files

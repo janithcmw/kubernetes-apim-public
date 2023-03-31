@@ -1,0 +1,13 @@
+# config map to push jmeter scripts.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "am-pattern-4.resource.prefix" . }}-jmeter-scripts-files
+  namespace : {{ .Release.Namespace }}
+data:
+  jmeter_script.jmx: |-
+    <add jmx scripts here>
+  jmeter_script_1.jmx: |-
+    <add jmx scripts here>
+  jmeter_script_2.jmx: |-
+    <add jmx scripts here>
