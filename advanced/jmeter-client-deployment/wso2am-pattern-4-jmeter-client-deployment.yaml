@@ -1,0 +1,55 @@
+# kindly note that you have to edit the execution commands udner the 'args' to correlty point the jmeter file
+# as well as the results in the result path.
+# note that the jmeter scrips are added to the location using a config map resides in the location
+#<Your_location>/kubernetes-apim-public/advanced/am-pattern-4/templates/client-manage-pod/wso2am-pattern-4-client-manage-pod-jmeter-files.yaml
+#Directly add the scripts to the config map with desired name and the point them in the 'args' to execute the scripts.
+# this was not added to the <Your_location>/kubernetes-apim-public/advanced/am-pattern-4/templates to stop deploying during the helm install
+# once you need to deploy use the following command to deploy the yaml
+# kubectl create -f <path_to_the_deployment_YAML>/wso2am-pattern-4-jmeter-client-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "am-pattern-4.resource.prefix" . }}-client-jmeter-deployment
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-jmeter
+  template:
+    metadata:
+      labels:
+        app: client-jmeter
+    spec:
+      hostAliases:
+        - ip: "20.197.113.209"
+          hostnames:
+            - "am.wso2.com"
+            - "gateway.am.wso2.com"
+            - "websocket.am.wso2.com"
+            - "websub.am.wso2.com"
+            - "management.mi.wso2.com"
+      containers:
+        - name: client-jmeter
+          image: ubuntu:latest
+          resources:
+            requests:
+              memory: "8Gi"
+              cpu: "4"
+            limits:
+              memory: "8Gi"
+              cpu: "4"
+          command: ["/bin/bash", "-c"]
+          args: ["apt update && echo 'start to install java-8' && apt install -y openjdk-8-jdk && echo 'Start to run Jmeter Scripts' && nohup sh /home/apache-jmeter-4.0/bin/jmeter -n -t /home/jmeter-scripts/HTTPSGetRequest.jmx -l /home/jmeter-results/HTTPSGetRequest-results-$HOSTNAME.jtl >> /home/jmeter-results/nohupOutput/HTTPSGetRequest-results-$HOSTNAME-nohupOut.out"]
+          volumeMounts:
+            - name: client-artifacts-storage-volume
+              mountPath: "/home"
+            - name: jmeter-scripts-files
+              mountPath: "/home/jmeter-scripts"
+      volumes:
+        - name: client-artifacts-storage-volume
+          persistentVolumeClaim:
+            claimName: {{ template "am-pattern-4.resource.prefix" . }}-client-manage-pod-artifacts-storage-volume-claim
+        - name: jmeter-scripts-files
+        configMap:
+          name: {{ template "am-pattern-4.resource.prefix" . }}-jmeter-scripts-files
