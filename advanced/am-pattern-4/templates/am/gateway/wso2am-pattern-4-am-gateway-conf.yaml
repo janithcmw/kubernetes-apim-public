@@ -154,6 +154,15 @@ data:
     [http_access_log]
     useLogger = false
     prefix = "${instance.log}_http_access"
+    
+    [apim.redis_config]
+    host = "wso2am-pattern-4-am-redis-service"
+    port = "6379"
+    #user = "wso2carbon"
+    password = "wso2carbon"
+  
+    [throttle_properties]
+    'throttling.distributed.counter.type' = "redis"
 
   log4j2.properties: |-
     # list of all appenders
