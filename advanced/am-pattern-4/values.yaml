@@ -143,10 +143,14 @@ wso2:
           className: ""
           # Hostname for Gateway profile
           hostname: "gateway.am.wso2.com"
+          # adding secret to keep same cert
+          secretName: "wso2deployment-secret"
           # Annotations for the API Manager Gateway service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            cert-manager.io/cluster-issuer: letsencrypt
+            kubernetes.io/tls-acme: "true"
 
         # Number of deployment replicas
         replicas: 2
@@ -251,6 +255,8 @@ wso2:
           className: ""
           # Hostname for Control Plane profile
           hostname: "am.wso2.com"
+          # adding secret to keep same cert
+          secretName : "wso2deployment-secret"
           # Annotations for the API Manager Control Plane service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
@@ -258,6 +264,8 @@ wso2:
             nginx.ingress.kubernetes.io/affinity: "cookie"
             nginx.ingress.kubernetes.io/session-cookie-name: "route"
             nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+            cert-manager.io/cluster-issuer: letsencrypt
+            kubernetes.io/tls-acme: "true"
         # Number of deployment replicas
         replicas: 2
 
@@ -347,10 +355,14 @@ wso2:
         management:
           # Hostname for the Micro Integrator management endpoint.
           hostname: "management.mi.wso2.com"
+          # adding secret to keep same cert
+          secretName: "wso2deployment-secret"
           # Annotations for the Micro Integrator management Ingress.
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            cert-manager.io/cluster-issuer: letsencrypt
+            kubernetes.io/tls-acme: "true"
 
 kubernetes:
   # Name of Kubernetes service account
