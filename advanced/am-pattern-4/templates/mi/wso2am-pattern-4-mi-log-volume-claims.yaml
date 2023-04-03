@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ template "am-pattern-4.resource.prefix" . }}-mi-log-storage-volume-claim
+  namespace: {{ .Release.Namespace }}
+  labels:
+    deployment: {{ template "am-pattern-4.resource.prefix" . }}-mi
+spec:
+  storageClassName: "azurefile-csi-premium"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi

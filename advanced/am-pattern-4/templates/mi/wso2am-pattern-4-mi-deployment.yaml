@@ -100,6 +100,13 @@ spec:
               value: {{ $val | quote }}
           {{- end }}
           {{- end }}
+          volumeMounts:
+            - name: mi-conf
+              mountPath: /home/wso2carbon/wso2-config-volume/conf
+            - name: mi-bin
+              mountPath: /home/wso2carbon/wso2-config-volume/bin
+            - name: mi-log-storage-volume
+              mountPath: /home/wso2carbon/wso2mi-4.2.0/repository/logs
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.mi.imagePullSecrets }}
       imagePullSecrets:
@@ -108,3 +115,13 @@ spec:
       imagePullSecrets:
         - name: {{ template "am-pattern-4.resource.prefix" . }}-mi-wso2-private-registry-creds
       {{ end }}
+      volumes:
+      - name: mi-conf
+        configMap:
+          name: {{ template "am-pattern-4.resource.prefix" . }}-mi-conf
+      - name: mi-bin
+        configMap:
+          name: {{ template "am-pattern-4.resource.prefix" . }}-mi-bin
+      - name: mi-log-storage-volume
+        persistentVolumeClaim:
+          claimName: {{ template "am-pattern-4.resource.prefix" . }}-mi-log-storage-volume-claim
