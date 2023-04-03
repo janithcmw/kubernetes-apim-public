@@ -149,8 +149,6 @@ wso2:
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-            cert-manager.io/cluster-issuer: letsencrypt
-            kubernetes.io/tls-acme: "true"
 
         # Number of deployment replicas
         replicas: 2
@@ -264,8 +262,6 @@ wso2:
             nginx.ingress.kubernetes.io/affinity: "cookie"
             nginx.ingress.kubernetes.io/session-cookie-name: "route"
             nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
-            cert-manager.io/cluster-issuer: letsencrypt
-            kubernetes.io/tls-acme: "true"
         # Number of deployment replicas
         replicas: 2
 
@@ -361,8 +357,6 @@ wso2:
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-            cert-manager.io/cluster-issuer: letsencrypt
-            kubernetes.io/tls-acme: "true"
 
 kubernetes:
   # Name of Kubernetes service account
