@@ -353,11 +353,11 @@ data:
       -DenableManagementApi=true \
       -DskipStartupExtensions=false \
       -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector \
+      -Dinstance.log=$HOSTNAME \
       -Dorg.ops4j.pax.logging.logReaderEnabled=false \
       -Dorg.ops4j.pax.logging.eventAdminEnabled=false \
       $NODE_PARAMS \
       -Dorg.apache.activemq.SERIALIZABLE_PACKAGES="*" \
-      -Dinstance.log=$HOSTNAME \
       org.wso2.micro.integrator.bootstrap.Bootstrap $*
       status=$?
       done
