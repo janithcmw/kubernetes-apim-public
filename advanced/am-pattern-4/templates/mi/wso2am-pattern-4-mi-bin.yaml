@@ -18,7 +18,7 @@ metadata:
   name: {{ template "am-pattern-4.resource.prefix" . }}-mi-bin
   namespace : {{ .Release.Namespace }}
 data:
-  log4j2.properties: |-
+  micro-integrator.sh: |-
     #!/bin/sh
     # micro-integrator.sh
     # ----------------------------------------------------------------------------
