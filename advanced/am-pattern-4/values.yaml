@@ -328,18 +328,19 @@ wso2:
       resources:
         requests:
           # The minimum amount of memory that should be allocated for a Pod
-          memory: "512Mi"
+          memory: "8Gi"
           # The minimum amount of CPU that should be allocated for a Pod
-          cpu: "500m"
+          cpu: "4000m"
         limits:
           # The maximum amount of memory that should be allocated for a Pod
-          memory: "1Gi"
+          memory: "8Gi"
           # The maximum amount of CPU that should be allocated for a Pod
-          cpu: "1000m"
+          cpu: "4000m"
       # Environment variables for the Micro integrator deployment.
       envs:
       #  ENV_NAME: ENV_VALUE
         instance.log: $HOSTNAME
+        JVM_MEM_OPTS: -Xms512m -Xmx4096m
       # Configure synapse testing.
       synapseTest:
         enabled: false
