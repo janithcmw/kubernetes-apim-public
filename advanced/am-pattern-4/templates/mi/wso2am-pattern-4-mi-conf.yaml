@@ -81,7 +81,7 @@ data:
     appender.CARBON_LOGFILE.policies.time.interval = 1
     appender.CARBON_LOGFILE.policies.time.modulate = true
     appender.CARBON_LOGFILE.policies.size.type = SizeBasedTriggeringPolicy
-    appender.CARBON_LOGFILE.policies.size.size=10MB
+    appender.CARBON_LOGFILE.policies.size.size=100MB
     appender.CARBON_LOGFILE.strategy.type = DefaultRolloverStrategy
     appender.CARBON_LOGFILE.strategy.max = 20
     appender.CARBON_LOGFILE.filter.threshold.type = ThresholdFilter
