@@ -226,7 +226,7 @@ data:
       #appender.syslog.filter.threshold.type = ThresholdFilter
       #appender.syslog.filter.threshold.level = DEBUG
     
-    loggers = AUDIT_LOG, SERVICE_LOGGER, API_LOGGER, trace-messages, org-apache-coyote, com-hazelcast, Owasp-CsrfGuard, \
+    loggers = PassThroughAccess, AUDIT_LOG, SERVICE_LOGGER, API_LOGGER, trace-messages, org-apache-coyote, com-hazelcast, Owasp-CsrfGuard, \
     org-apache-axis2-wsdl-codegen-writer-PrettyPrinter, org-apache-axis2-clustering, org-apache-catalina, \
     org-apache-tomcat, org-wso2-carbon-apacheds, org-apache-directory-server-ldap, \
     org-apache-directory-server-core-event, com-atomikos, org-quartz, org-apache-jackrabbit-webdav, org-apache-juddi, \
@@ -355,6 +355,9 @@ data:
     
     logger.synapse-transport-http-wire.name=org.apache.synapse.transport.http.wire
     logger.synapse-transport-http-wire.level=OFF
+    
+    logger.PassThroughAccess.name = org.apache.synapse.transport.http.access
+    logger.PassThroughAccess.level = DEBUG
       
       # Following entries are to see HTTP headers and messages of Callout mediator/MessageProcessor
     logger.httpclient-wire-header.name=httpclient.wire.header
