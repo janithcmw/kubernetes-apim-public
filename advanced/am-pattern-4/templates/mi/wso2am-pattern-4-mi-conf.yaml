@@ -356,8 +356,9 @@ data:
     logger.synapse-transport-http-wire.name=org.apache.synapse.transport.http.wire
     logger.synapse-transport-http-wire.level=OFF
     
+    #disable access logs
     logger.PassThroughAccess.name = org.apache.synapse.transport.http.access
-    logger.PassThroughAccess.level = DEBUG
+    logger.PassThroughAccess.level = ERROR
       
       # Following entries are to see HTTP headers and messages of Callout mediator/MessageProcessor
     logger.httpclient-wire-header.name=httpclient.wire.header
