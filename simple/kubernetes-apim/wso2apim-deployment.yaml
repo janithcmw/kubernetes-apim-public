@@ -99,7 +99,7 @@ spec:
             - name: mysql-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
             - name: wso2am-pattern-1-am-docker-entrypoint
-              mountPath: /home/wso2carbon
+              mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
       serviceAccountName: wso2am-pattern-1-svc-account
 #      imagePullSecrets:
