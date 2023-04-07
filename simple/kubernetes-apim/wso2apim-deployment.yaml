@@ -98,6 +98,9 @@ spec:
               subPath: deployment.toml
             - name: mysql-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+            - name: wso2am-pattern-docker-entrypoint
+              mountPath: /home/wso2carbon
+              subPath: docker-entrypoint.sh
       serviceAccountName: wso2am-pattern-1-svc-account
 #      imagePullSecrets:
 #        - name: wso2am-pattern-1-creds
@@ -105,6 +108,10 @@ spec:
         - name: wso2am-pattern-1-am-1-conf
           configMap:
             name: wso2am-pattern-1-am-1-conf
+        - name: wso2am-pattern-docker-entrypoint
+          configMap:
+            name: wso2am-pattern-1-am-conf-entrypoint
+            defaultMode: 0407
         - name: mysql-connector-jar
           emptyDir: {}
 
