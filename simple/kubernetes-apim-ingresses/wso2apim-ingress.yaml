@@ -16,6 +16,8 @@ spec:
   tls:
     - hosts:
         - wso2apim-server
+        - wso2apim-gateway
+      secretName: ingress-certificate
   rules:
     - host: wso2apim-server
       http:
