@@ -163,6 +163,8 @@ data:
   
     [throttle_properties]
     'throttling.distributed.counter.type' = "redis"
+    'throttling.replication.frequency' = "15"
+    'throttlingWindowReplicator.replication.frequency' = "15"
 
   log4j2.properties: |-
     # list of all appenders
