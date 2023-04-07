@@ -5,9 +5,8 @@ metadata:
   namespace: wso2
 data:
   deployment.toml: |
-
     [server]
-    hostname = ""ip.node.k8s.&.wso2.apim""
+    hostname = "wso2.apim"
     node_ip = "$env{NODE_IP}"
     # offset=0
     mode = "single" #single or ha
