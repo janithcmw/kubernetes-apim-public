@@ -4,4 +4,4 @@ kind: ServiceAccount
 metadata:
   name: wso2am-pattern-1-svc-account
   namespace: wso2
----
+
