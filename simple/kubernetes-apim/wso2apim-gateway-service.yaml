@@ -17,10 +17,18 @@ spec:
       protocol: TCP
       port: 8280
       targetPort: 8280
-      nodePort: 30280
     -
       name: pass-through-https
       protocol: TCP
       port: 8243
       targetPort: 8243
-      nodePort: 30243
+
+    - name: websocket-ws
+      protocol: TCP
+      port: 9099
+      targetPort: 9099
+
+    - name: websocket-wss
+      protocol: TCP
+      port: 8099
+      targetPort: 8099

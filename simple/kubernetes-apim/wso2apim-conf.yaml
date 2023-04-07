@@ -66,10 +66,10 @@ data:
     service_url = "https://localhost:${mgt.transport.https.port}/services/"
     username= "${admin.username}"
     password= "${admin.password}"
-    ws_endpoint = "ws://wso2apim-server:9099"
-    wss_endpoint = "wss://wso2apim-server:8099"
-    http_endpoint = "http://wso2apim-server:30280"
-    https_endpoint = "https://wso2apim-server:30243"
+    ws_endpoint = "ws://wso2am-pattern-1-am-gateway-service:9099"
+    wss_endpoint = "wss://wso2am-pattern-1-am-gateway-service:8099"
+    http_endpoint = "http://wso2am-pattern-1-am-gateway-service:8280"
+    https_endpoint = "https://wso2am-pattern-1-am-gateway-service:8243"
 
     #[apim.cache.gateway_token]
     #enable = true
@@ -153,7 +153,7 @@ data:
     #enable_token_hashing = false
 
     [apim.devportal]
-    url = "https://wso2apim-server:30443/devportal"
+    url = "https://wso2apim-server/devportal"
     #enable_application_sharing = false
     #if application_sharing_type, application_sharing_impl both defined priority goes to application_sharing_impl
     #application_sharing_type = "default" #changed type, saml, default #todo: check the new config for rest api
@@ -269,5 +269,5 @@ data:
     'header.X-WSO2-KEY-MANAGER' = "default"
 
     [transport.https.properties]
-    proxyPort = 30443
----
+    proxyPort = 443
+
