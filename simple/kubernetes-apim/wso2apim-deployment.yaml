@@ -24,7 +24,7 @@ spec:
       hostAliases:
         - ip: "127.0.0.1"
           hostnames:
-            - "wso2apim"
+            - "wso2apim-server"
       initContainers:
         - name: init-db
           image: busybox:1.31
