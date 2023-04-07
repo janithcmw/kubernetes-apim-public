@@ -9,7 +9,6 @@ spec:
   selector:
     deployment: wso2am-pattern-1-am
     product: api-manager
-  type: NodePort
   ports:
     # ports that this service should serve on
     -
