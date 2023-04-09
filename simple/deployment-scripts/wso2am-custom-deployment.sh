@@ -16,6 +16,7 @@ kubectl create -f kubernetes-apim-mysql/wso2apim-mysql-deployment.yaml
 # APIM-AllinOne
 #PVCs
 kubectl create -f kubernetes-apim/wso2apim-netstat-captured-data-storage-claim.yaml
+kubectl create -f kubernetes-apim/wso2apim-log-storage-claim.yaml
 
 #configMaps
 kubectl create -f kubernetes-apim/wso2apim-conf.yaml
