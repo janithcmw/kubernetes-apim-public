@@ -41,22 +41,6 @@ spec:
             - name: mysql-connector-jar
               mountPath: /mysql-connector-jar
       containers:
-        - name: netshoot
-          image: nicolaka/netshoot:latest
-          command: [ 'sleep', 'infinity' ]
-          env:
-            - name: MAIN_HOSTNAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-          securityContext:
-            capabilities:
-              add:
-                - NET_ADMIN
-                - NET_RAW
-          volumeMounts:
-            - name: netstat-captured-data-storage
-              mountPath: /root/netstat-data
         - name: wso2am-pattern-1-am
 #          image: "$image.pull.@.wso2"/wso2am:3.2.0
           image: janithcmw/wso2apim320:3.2.0
@@ -117,6 +101,22 @@ spec:
             - name: wso2am-pattern-1-am-docker-entrypoint
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
+        - name: netshoot
+          image: nicolaka/netshoot:latest
+          command: [ 'sleep', 'infinity' ]
+          env:
+            - name: MAIN_HOSTNAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_RAW
+          volumeMounts:
+            - name: netstat-captured-data-storage
+              mountPath: /root/netstat-data
       serviceAccountName: wso2am-pattern-1-svc-account
 #      imagePullSecrets:
 #        - name: wso2am-pattern-1-creds
