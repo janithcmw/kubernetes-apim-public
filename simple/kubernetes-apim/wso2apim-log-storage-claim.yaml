@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wso2apim-log-storage-claim
+  namespace: wso2
+  labels:
+    deployment: wso2am-pattern-1-am
+    product: api-manager
+spec:
+  storageClassName: "azurefile-csi-premium"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi

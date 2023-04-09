@@ -101,6 +101,8 @@ spec:
             - name: wso2am-pattern-1-am-docker-entrypoint
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
+            - name: wsp2apim-log-storage
+              mountPath: /home/wso2carbon/wso2am-3.2.0/repository/logs
         - name: netshoot
           image: nicolaka/netshoot:latest
           command: [ 'sleep', 'infinity' ]
@@ -131,6 +133,9 @@ spec:
         - name: netstat-captured-data-storage
           persistentVolumeClaim:
             claimName: netstat-captured-data-storage-claim
+        - name: wsp2apim-log-storage
+          persistentVolumeClaim:
+            claimName: wsp2apim-log-storage-claim
         - name: mysql-connector-jar
           emptyDir: {}
 
