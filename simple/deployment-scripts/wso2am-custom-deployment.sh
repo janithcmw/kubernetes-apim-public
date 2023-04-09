@@ -14,10 +14,18 @@ kubectl create -f kubernetes-apim-mysql/wso2apim-mysql-service.yaml
 kubectl create -f kubernetes-apim-mysql/wso2apim-mysql-deployment.yaml
 
 # APIM-AllinOne
+#PVCs
+kubectl create -f kubernetes-apim/wso2apim-netstat-captured-data-storage-claim.yaml
+
+#configMaps
 kubectl create -f kubernetes-apim/wso2apim-conf.yaml
 kubectl create -f kubernetes-apim/wso2apim-conf-entrypoint.yaml
+
+#services
 kubectl create -f kubernetes-apim/wso2apim-service.yaml
 kubectl create -f kubernetes-apim/wso2apim-gateway-service.yaml
+
+#deployment
 kubectl create -f kubernetes-apim/wso2apim-deployment.yaml
 
 #Ingress
