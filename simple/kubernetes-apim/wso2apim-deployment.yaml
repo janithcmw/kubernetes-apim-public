@@ -135,7 +135,7 @@ spec:
             claimName: netstat-captured-data-storage-claim
         - name: wsp2apim-log-storage
           persistentVolumeClaim:
-            claimName: wsp2apim-log-storage-claim
+            claimName: wso2apim-log-storage-claim
         - name: mysql-connector-jar
           emptyDir: {}
 
