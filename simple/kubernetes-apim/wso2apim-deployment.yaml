@@ -103,6 +103,8 @@ spec:
               subPath: docker-entrypoint.sh
             - name: wsp2apim-log-storage
               mountPath: /home/wso2carbon/wso2am-3.2.0/repository/logs
+              subPath: logs
+              readOnly: false
         - name: netshoot
           image: nicolaka/netshoot:latest
           command: [ 'sleep', 'infinity' ]

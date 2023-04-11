@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wso2apim-log-storage-claim
+  name: netstat-captured-data-storage-claim
   namespace: wso2
   labels:
     deployment: wso2am-pattern-1-am
     product: api-manager
 spec:
-  storageClassName: "azurefile-csi-premium"
+  storageClassName: ""
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 20Gi
+      storage: 5Gi
+  volumeName: netstat-captured-data-storage

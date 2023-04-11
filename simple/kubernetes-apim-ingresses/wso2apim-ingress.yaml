@@ -11,13 +11,11 @@ metadata:
     nginx.ingress.kubernetes.io/affinity: "cookie"
     nginx.ingress.kubernetes.io/session-cookie-name: "route"
     nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
-    nginx.ingress.kubernetes.io/ssl-cert: "wso2/ingress-certificate"
 spec:
   tls:
     - hosts:
         - wso2apim-server
         - wso2apim-gateway
-      secretName: ingress-certificate
   rules:
     - host: wso2apim-server
       http:
