@@ -11,4 +11,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: fss.csi.oraclecloud.com
-    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaadd2y62nfqwillqojxwiotjmfsc2ylefuzaaaaa:10.0.10.177:/bny-k8s-oke-filesystem/netstat-captured-data-storage
+    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaadd3e6tnfqwillqojxwiotjmfsc2ylefuzaaaaa:10.0.10.181:/bny-k8s-oke-filesystem-v2/netstat-captured-data-storage

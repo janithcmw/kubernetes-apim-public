@@ -11,4 +11,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: fss.csi.oraclecloud.com
-    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaadd2y62nfqwillqojxwiotjmfsc2ylefuzaaaaa:10.0.10.133:/bny-k8s-oke-filesystem/wso2apim-log-storage-claim
+    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaadd3e6tnfqwillqojxwiotjmfsc2ylefuzaaaaa:10.0.10.205:/bny-k8s-oke-filesystem-v2/wso2apim-log-storage-claim
