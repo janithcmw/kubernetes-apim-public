@@ -358,7 +358,7 @@ data:
       -DworkerNode=false \
       -DenableCorrelationLogs=false \
       -Dremove.outgoing.headers=activityid \
-      -javaagent:/home/wso2carbon/wso2am-3.2.0/repository/conf/extract-tls-secrets-4.0.0.jar=/home/wso2carbon/wso2am-3.2.0/repository/logs \
+      -javaagent:/home/wso2carbon/wso2am-3.2.0/repository/conf/extract-tls-secrets-4.0.0.jar=/home/wso2carbon/wso2am-3.2.0/repository/logs/secret.log \
       -Dcarbon.new.config.dir.path="$CARBON_HOME/repository/resources/conf" \
       -Djavax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom=net.sf.saxon.xpath.XPathFactoryImpl \
       org.wso2.carbon.bootstrap.Bootstrap $*
