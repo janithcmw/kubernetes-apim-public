@@ -54,7 +54,8 @@ spec:
       containers:
         - name: wso2am-pattern-1-am
 #          image: "$image.pull.@.wso2"/wso2am:3.2.0
-          image: janithcmw/wso2apim320:3.2.0
+#          image: janithcmw/wso2apim320:3.2.0
+          image: janithcmw/wso2apim320:3.2.0-1
           livenessProbe:
             exec:
               command:
