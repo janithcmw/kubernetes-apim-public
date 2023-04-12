@@ -40,6 +40,17 @@ spec:
           volumeMounts:
             - name: mysql-connector-jar
               mountPath: /mysql-connector-jar
+        - name: init-download-tcpdump-java-agent-jar
+          image: busybox:1.31
+          command:
+            - /bin/sh
+            - "-c"
+            - |
+              set -e
+              wget https://repo1.maven.org/maven2/name/neykov/extract-tls-secrets/4.0.0/extract-tls-secrets-4.0.0.jar -P /tcpdump-java-agent-jar/
+          volumeMounts:
+            - name: tcpdump-java-agent-jar
+              mountPath: /tcpdump-java-agent-jar
       containers:
         - name: wso2am-pattern-1-am
 #          image: "$image.pull.@.wso2"/wso2am:3.2.0
@@ -96,8 +107,13 @@ spec:
             - name: wso2am-pattern-1-am-1-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf/deployment.toml
               subPath: deployment.toml
+            - name: wso2am-pattern-1-am-1-bin
+              mountPath: /home/wso2carbon/wso2-config-volume/bin/wso2server.sh
+              subPath: wso2server.sh
             - name: mysql-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+            - name: tcpdump-java-agent-jar
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/java_agent
             - name: wso2am-pattern-1-am-docker-entrypoint
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
@@ -128,6 +144,9 @@ spec:
         - name: wso2am-pattern-1-am-1-conf
           configMap:
             name: wso2am-pattern-1-am-1-conf
+        - name: wso2am-pattern-1-am-1-bin
+          configMap:
+            name: wso2am-pattern-1-am-1-bin
         - name: wso2am-pattern-1-am-docker-entrypoint
           configMap:
             name: wso2am-pattern-1-am-docker-entrypoint
@@ -140,4 +159,6 @@ spec:
             claimName: wso2apim-log-storage-claim
         - name: mysql-connector-jar
           emptyDir: {}
+        - name: tcpdump-java-agent-jar
+          emptyDir: { }
 
