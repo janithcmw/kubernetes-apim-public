@@ -22,6 +22,7 @@ kubectl create -f kubernetes-apim/wso2apim-log-storage-claim.yaml
 
 #configMaps
 kubectl create -f kubernetes-apim/wso2apim-conf.yaml
+kubectl create -f kubernetes-apim/wso2apim-bin.yaml
 kubectl create -f kubernetes-apim/wso2apim-conf-entrypoint.yaml
 
 #services
