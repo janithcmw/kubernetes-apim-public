@@ -22,7 +22,7 @@ spec:
         app: client-jmeter
     spec:
       hostAliases:
-        - ip: "20.197.113.209"
+        - ip: "20.195.33.107"
           hostnames:
             - "am.wso2.com"
             - "gateway.am.wso2.com"
