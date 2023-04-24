@@ -23,27 +23,27 @@ spec:
     deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-2-gateway
   ports:
     # ports that this service should serve on
-      - name: pass-through-http
+    - name: pass-through-http
       protocol: TCP
       port: 8280
-      - name: pass-through-https
-        protocol: TCP
-        port: 8243
-      - name: servlet-http
-        protocol: TCP
-        port: 9763
-      - name: servlet-https
-        protocol: TCP
-        port: 9443
-      - name: websub-http
-        protocol: TCP
-        port: 9021
-      - name: websub-https
-        protocol: TCP
-        port: 8021
-      - name: websocket-http
-        protocol: TCP
-        port: 9099
-      - name: websocket-https
-        protocol: TCP
-        port: 8099
+    - name: pass-through-https
+      protocol: TCP
+      port: 8243
+    - name: servlet-http
+      protocol: TCP
+      port: 9763
+    - name: servlet-https
+      protocol: TCP
+      port: 9443
+    - name: websub-http
+      protocol: TCP
+      port: 9021
+    - name: websub-https
+      protocol: TCP
+      port: 8021
+    - name: websocket-http
+      protocol: TCP
+      port: 9099
+    - name: websocket-https
+      protocol: TCP
+      port: 8099
