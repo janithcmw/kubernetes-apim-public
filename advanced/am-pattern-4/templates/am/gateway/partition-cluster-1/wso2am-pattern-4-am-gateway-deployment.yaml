@@ -124,7 +124,7 @@ spec:
       volumes:
       - name: wso2am-gateway-conf
         configMap:
-          name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-conf
+          name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-conf
       - name: am-gateway-bin
         configMap:
           name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-bin
