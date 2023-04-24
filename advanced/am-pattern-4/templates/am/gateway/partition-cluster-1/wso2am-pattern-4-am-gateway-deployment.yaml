@@ -15,7 +15,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-deployment
+  name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-deployment
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.wso2.deployment.am.gateway.replicas }}
@@ -26,13 +26,13 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway
+      deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway
   template:
     metadata:
       annotations:
-        checksum.am.gw.conf: {{ include (print $.Template.BasePath "/am/partition-cluster-1/gateway/wso2am-pattern-4-am-gateway-conf.yaml") . | sha256sum }}
+        checksum.am.gw.conf: {{ include (print $.Template.BasePath "/am/gateway/partition-cluster-1/wso2am-pattern-4-am-gateway-conf.yaml") . | sha256sum }}
       labels:
-        deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway
+        deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway
         product: apim
     spec:
       initContainers:

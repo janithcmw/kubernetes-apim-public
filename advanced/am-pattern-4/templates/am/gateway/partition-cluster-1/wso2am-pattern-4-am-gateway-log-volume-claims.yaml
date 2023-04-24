@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-log-storage-volume-claim
+  name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-log-storage-volume-claim
   namespace: {{ .Release.Namespace }}
   labels:
-    deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway
+    deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway
 spec:
   storageClassName: "azurefile-csi-premium"
   accessModes:

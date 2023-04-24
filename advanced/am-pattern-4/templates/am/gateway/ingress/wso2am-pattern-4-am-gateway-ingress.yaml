@@ -35,11 +35,18 @@ spec:
   - host: {{ .Values.wso2.deployment.am.gateway.ingress.hostname }}
     http:
       paths:
-      - path: /
+      - path: /region_1
         pathType: Prefix
         backend:
           service:
-            name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-service
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-service
+            port:
+              number: 8243
+      - path: /region_2
+        pathType: Prefix
+        backend:
+          service:
+            name: { { template "am-pattern-4.resource.prefix" . } }-am-pc-2-gateway-service
             port:
               number: 8243
 {{- end -}}
