@@ -28,7 +28,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum.am.conf: {{ include (print $.Template.BasePath "/am/partition-cluster-1/traffic-manager/instance-2/wso2am-pattern-4-am-trafficmanager-conf.yaml") . | sha256sum }}
+        checksum.am.conf: {{ include (print $.Template.BasePath "/am/traffic-manager/instance-2/wso2am-pattern-4-am-trafficmanager-conf.yaml") . | sha256sum }}
       labels:
         deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
         node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2
