@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-log-storage-volume-claim
+  name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-2-trafficmanager-log-storage-volume-claim
   namespace: {{ .Release.Namespace }}
   labels:
-    deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
+    deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-2-trafficmanager
 spec:
   storageClassName: "azurefile-csi-premium"
   accessModes:

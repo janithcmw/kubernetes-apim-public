@@ -15,7 +15,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2-deployment
+  name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-1-deployment
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
@@ -24,14 +24,14 @@ spec:
   selector:
     matchLabels:
       deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
-      node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2
+      node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-1
   template:
     metadata:
       annotations:
-        checksum.am.conf: {{ include (print $.Template.BasePath "/am/traffic-manager/instance-2/wso2am-pattern-4-am-trafficmanager-conf.yaml") . | sha256sum }}
+        checksum.am.conf: {{ include (print $.Template.BasePath "/am/traffic-manager/instance-1/wso2am-pattern-4-am-trafficmanager-conf.yaml") . | sha256sum }}
       labels:
         deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
-        node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2
+        node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-1
         product: apim
     spec:
       initContainers:
@@ -105,13 +105,13 @@ spec:
       volumes:
         - name: wso2am-conf
           configMap:
-            name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2-conf
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-1-conf
         - name: am-trafficmanager-bin
           configMap:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-bin
         - name: am-trafficmanager-log-storage-volume
           persistentVolumeClaim:
-            claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-log-storage-volume-claim
+            claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-log-storage-volume-claim
         - name: wso2am-conf-entrypoint
           configMap:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-conf-entrypoint
