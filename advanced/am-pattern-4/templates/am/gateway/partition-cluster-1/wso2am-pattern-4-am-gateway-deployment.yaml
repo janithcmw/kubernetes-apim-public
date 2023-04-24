@@ -30,7 +30,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum.am.gw.conf: {{ include (print $.Template.BasePath "/am/gateway/conf/wso2am-pattern-4-am-gateway-conf.yaml") . | sha256sum }}
+        checksum.am.gw.conf: {{ include (print $.Template.BasePath "/am/gateway/partition-cluster-1/wso2am-pattern-4-am-gateway-conf.yaml") . | sha256sum }}
       labels:
         deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway
         product: apim
