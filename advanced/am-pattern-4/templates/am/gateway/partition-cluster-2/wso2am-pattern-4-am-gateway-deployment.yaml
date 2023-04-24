@@ -51,83 +51,83 @@ spec:
             - "websub.am.wso2.com"
             - "management.mi.wso2.com"
       containers:
-        - name: wso2am-gateway
-  {{- include "image" (dict "Values" .Values "deployment" .Values.wso2.deployment.am) | indent 8 }}
-imagePullPolicy: {{ .Values.wso2.deployment.am.imagePullPolicy }}
-env:
-  - name: PROFILE_NAME
-    value: gateway-worker
-  - name: NODE_IP
-    valueFrom:
-      fieldRef:
-        apiVersion: v1
-        fieldPath: status.podIP
-  - name: JVM_MEM_OPTS
-    value: "-Xms{{ .Values.wso2.deployment.am.gateway.resources.jvm.heap.memory.xms }} -Xmx{{ .Values.wso2.deployment.am.gateway.resources.jvm.heap.memory.xmx }}"
-startupProbe:
-  exec:
-    command:
-      - /bin/sh
-      - -c
-      - nc -z localhost 8243
-  initialDelaySeconds: {{ .Values.wso2.deployment.am.gateway.startupProbe.initialDelaySeconds }}
-  periodSeconds: {{ .Values.wso2.deployment.am.gateway.startupProbe.periodSeconds }}
-  failureThreshold: {{ .Values.wso2.deployment.am.gateway.startupProbe.failureThreshold }}
-livenessProbe:
-  httpGet:
-    path: /services/Version
-    port: 9763
-  periodSeconds: {{ .Values.wso2.deployment.am.gateway.livenessProbe.periodSeconds }}
-readinessProbe:
-  httpGet:
-    path: /services/Version
-    port: 9763
-  initialDelaySeconds: {{ .Values.wso2.deployment.am.gateway.readinessProbe.initialDelaySeconds }}
-  periodSeconds: {{ .Values.wso2.deployment.am.gateway.readinessProbe.periodSeconds }}
-lifecycle:
-  preStop:
-    exec:
-      command:  ['sh', '-c', '${WSO2_SERVER_HOME}/bin/api-manager.sh stop']
-resources:
-  requests:
-    memory: {{ .Values.wso2.deployment.am.gateway.resources.requests.memory }}
-    cpu: {{ .Values.wso2.deployment.am.gateway.resources.requests.cpu }}
-  limits:
-    memory: {{ .Values.wso2.deployment.am.gateway.resources.limits.memory }}
-    cpu: {{ .Values.wso2.deployment.am.gateway.resources.limits.cpu }}
-securityContext:
-  runAsUser: 802
-ports:
-  - containerPort: 8280
-    protocol: TCP
-  - containerPort: 8243
-    protocol: TCP
-  - containerPort: 9763
-    protocol: TCP
-  - containerPort: 9443
-    protocol: TCP
-volumeMounts:
-  - name: wso2am-gateway-conf
-    mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
-  - name: am-gateway-bin
-    mountPath: /home/wso2carbon/wso2-config-volume/bin
-  - name: am-gateway-log-storage-volume
-    mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
-serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
-  {{- if .Values.wso2.deployment.am.imagePullSecrets }}
-imagePullSecrets:
-  - name: {{ .Values.wso2.deployment.am.imagePullSecrets }}
-  {{- else if and (not (eq .Values.wso2.subscription.username "")) (not (eq .Values.wso2.subscription.password "")) }}
-imagePullSecrets:
-  - name: {{ template "am-pattern-4.resource.prefix" . }}-wso2-private-registry-creds
-  {{ end }}
-volumes:
-  - name: wso2am-gateway-conf
-    configMap:
-      name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-conf
-  - name: am-gateway-bin
-configMap:
-  name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-bin
-  - name: am-gateway-log-storage-volume
-persistentVolumeClaim:
-  claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-log-storage-volume-claim
+      - name: wso2am-gateway
+{{- include "image" (dict "Values" .Values "deployment" .Values.wso2.deployment.am) | indent 8 }}
+        imagePullPolicy: {{ .Values.wso2.deployment.am.imagePullPolicy }}
+        env:
+          - name: PROFILE_NAME
+            value: gateway-worker
+          - name: NODE_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: JVM_MEM_OPTS
+            value: "-Xms{{ .Values.wso2.deployment.am.gateway.resources.jvm.heap.memory.xms }} -Xmx{{ .Values.wso2.deployment.am.gateway.resources.jvm.heap.memory.xmx }}"
+        startupProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - nc -z localhost 8243
+          initialDelaySeconds: {{ .Values.wso2.deployment.am.gateway.startupProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.wso2.deployment.am.gateway.startupProbe.periodSeconds }}
+          failureThreshold: {{ .Values.wso2.deployment.am.gateway.startupProbe.failureThreshold }}
+        livenessProbe:
+          httpGet:
+            path: /services/Version
+            port: 9763
+          periodSeconds: {{ .Values.wso2.deployment.am.gateway.livenessProbe.periodSeconds }}
+        readinessProbe:
+          httpGet:
+            path: /services/Version
+            port: 9763
+          initialDelaySeconds: {{ .Values.wso2.deployment.am.gateway.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.wso2.deployment.am.gateway.readinessProbe.periodSeconds }}
+        lifecycle:
+          preStop:
+            exec:
+              command:  ['sh', '-c', '${WSO2_SERVER_HOME}/bin/api-manager.sh stop']
+        resources:
+          requests:
+            memory: {{ .Values.wso2.deployment.am.gateway.resources.requests.memory }}
+            cpu: {{ .Values.wso2.deployment.am.gateway.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.wso2.deployment.am.gateway.resources.limits.memory }}
+            cpu: {{ .Values.wso2.deployment.am.gateway.resources.limits.cpu }}
+        securityContext:
+          runAsUser: 802
+        ports:
+          - containerPort: 8280
+            protocol: TCP
+          - containerPort: 8243
+            protocol: TCP
+          - containerPort: 9763
+            protocol: TCP
+          - containerPort: 9443
+            protocol: TCP
+        volumeMounts:
+          - name: wso2am-gateway-conf
+            mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
+          - name: am-gateway-bin
+            mountPath: /home/wso2carbon/wso2-config-volume/bin
+          - name: am-gateway-log-storage-volume
+            mountPath: /home/wso2carbon/wso2am-4.2.0/repository/logs
+        serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
+          {{- if .Values.wso2.deployment.am.imagePullSecrets }}
+        imagePullSecrets:
+          - name: {{ .Values.wso2.deployment.am.imagePullSecrets }}
+          {{- else if and (not (eq .Values.wso2.subscription.username "")) (not (eq .Values.wso2.subscription.password "")) }}
+        imagePullSecrets:
+          - name: {{ template "am-pattern-4.resource.prefix" . }}-wso2-private-registry-creds
+          {{ end }}
+        volumes:
+          - name: wso2am-gateway-conf
+            configMap:
+              name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-conf
+          - name: am-gateway-bin
+        configMap:
+          name: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-bin
+          - name: am-gateway-log-storage-volume
+        persistentVolumeClaim:
+          claimName: {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-log-storage-volume-claim
