@@ -96,8 +96,8 @@ data:
     event_listening_endpoints = ["tcp://{{ template "am-pattern-4.resource.prefix" . }}-am-cp-1-service:5672","tcp://{{ template "am-pattern-4.resource.prefix" . }}-am-cp-2-service:5672"]
 
     [apim.throttling]
-    event_duplicate_url = ["tcp://{{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-1-service:5672"]
-    service_url = "https://{{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-service:${mgt.transport.https.port}/services/"
+    event_duplicate_url = ["tcp://{{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-1-service:5672"]
+    service_url = "https://{{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-service:${mgt.transport.https.port}/services/"
     #enable_data_publishing = true
     #enable_policy_deploy = true
     #enable_blacklist_condition = true
