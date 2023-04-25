@@ -49,4 +49,11 @@ spec:
             name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-2-gateway-service
             port:
               number: 8243
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: { { template "am-pattern-4.resource.prefix" . } }-am-pc-2-gateway-service
+            port:
+              number: 8243
 {{- end -}}
