@@ -30,8 +30,8 @@ spec:
       annotations:
         checksum.am.conf: {{ include (print $.Template.BasePath "/am/traffic-manager/partition-cluster-1/instance-2/wso2am-pattern-4-am-trafficmanager-conf.yaml") . | sha256sum }}
       labels:
-        deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
-        node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-2
+        deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-trafficmanager
+        node: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-trafficmanager-2
         product: apim
     spec:
       initContainers:
