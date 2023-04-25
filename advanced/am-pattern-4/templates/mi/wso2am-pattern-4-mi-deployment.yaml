@@ -40,9 +40,15 @@ spec:
         - name: init-cp
           image: busybox:1.32
           command: ['sh', '-c', 'echo -e "Checking for the availability of Control Plane deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-cp-service 9443; do sleep 1; printf "-"; done; echo -e "  >> Control Plane has started";']
-        - name: init-gw
+        - name: init-pc-1-gw
           image: busybox:1.32
-          command: ['sh', '-c', 'echo -e "Checking for the availability of Gateway deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-gateway-service 8243; do sleep 1; printf "-"; done; echo -e "  >> Gateway has started";']
+          command: ['sh', '-c', 'echo -e "Checking for the availability of Gateway deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-service 8243; do sleep 1; printf "-"; done; echo -e "  >> Gateway has started";']
+        - name: init-pc-2-gw
+          image: busybox:1.32
+          command: ['sh', '-c', 'echo -e "Checking for the availability of Gateway deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-pc-2-gateway-service 8243; do sleep 1; printf "-"; done; echo -e "  >> Gateway has started";']
+        - name: init-pc-3-gw
+          image: busybox:1.32
+          command: ['sh', '-c', 'echo -e "Checking for the availability of Gateway deployment"; while ! nc -z {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-gateway-service 8243; do sleep 1; printf "-"; done; echo -e "  >> Gateway has started";']
       containers:
         - name: wso2micro-integrator
 {{- include "image" (dict "Values" .Values "deployment" .Values.wso2.deployment.mi) | indent 10 }}
