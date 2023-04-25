@@ -23,8 +23,8 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager
-      node: {{ template "am-pattern-4.resource.prefix" . }}-am-trafficmanager-1
+      deployment: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager
+      node: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-3-trafficmanager-1
   template:
     metadata:
       annotations:
