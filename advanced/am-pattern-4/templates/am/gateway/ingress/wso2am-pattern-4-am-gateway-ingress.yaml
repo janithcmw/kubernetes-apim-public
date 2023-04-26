@@ -46,7 +46,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: { { template "am-pattern-4.resource.prefix" . } }-am-pc-1-gateway-service
+            name: {{ template "am-pattern-4.resource.prefix" . }}-am-pc-1-gateway-service
             port:
               number: 8243
       - path: /region_2
