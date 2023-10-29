@@ -1,0 +1,7 @@
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: wso2am-gw-separated-svc-account
+  namespace: wso2
+

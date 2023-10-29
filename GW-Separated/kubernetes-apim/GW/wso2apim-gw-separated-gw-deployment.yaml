@@ -1,0 +1,166 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wso2am-gw-separated-gw-deployment
+  namespace: wso2
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      deployment: wso2am-gw-separated-gw
+      product: api-manager
+  template:
+    metadata:
+      labels:
+        deployment: wso2am-gw-separated-gw
+        product: api-manager
+    spec:
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - "wso2apim-server"
+      initContainers:
+        - name: init-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z wso2apim-rdbms-service-mysql 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
+        - name: init-download-mysql-connector
+          image: busybox:1.31
+          command:
+            - /bin/sh
+            - "-c"
+            - |
+              set -e
+              wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar -P /mysql-connector-jar/
+          volumeMounts:
+            - name: mysql-connector-jar
+              mountPath: /mysql-connector-jar
+        - name: init-download-tcpdump-java-agent-jar
+          image: busybox:1.31
+          command:
+            - /bin/sh
+            - "-c"
+            - |
+              set -e
+              wget https://repo1.maven.org/maven2/name/neykov/extract-tls-secrets/4.0.0/extract-tls-secrets-4.0.0.jar -P /tcpdump-java-agent-jar/
+          volumeMounts:
+            - name: tcpdump-java-agent-jar
+              mountPath: /tcpdump-java-agent-jar
+      containers:
+        - name: wso2am-gw-separated-gw
+#          image: "$image.pull.@.wso2"/wso2am:3.2.0
+#          image: janithcmw/wso2apim320:3.2.0
+          image: janithcmw/wso2apim320:3.2.0-1
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 9443
+            initialDelaySeconds: 250
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 9443
+            initialDelaySeconds: 250
+            periodSeconds: 10
+          lifecycle:
+            preStop:
+              exec:
+                command:  ['sh', '-c', '${WSO2_SERVER_HOME}/bin/wso2server.sh stop']
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 1000m
+            limits:
+              memory: 2Gi
+              cpu: 2000m
+          imagePullPolicy: Always
+          ports:
+            -
+              containerPort: 8280
+              protocol: "TCP"
+            -
+              containerPort: 8243
+              protocol: "TCP"
+            -
+              containerPort: 9763
+              protocol: "TCP"
+            -
+              containerPort: 9443
+              protocol: "TCP"
+          env:
+            - name: PROFILE_NAME
+              value: gateway-worker
+            - name: HOST_NAME
+              value: "wso2am-gw-server"
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          volumeMounts:
+            - name: wso2am-gw-separated-gw-deployment-conf
+              mountPath: /home/wso2carbon/wso2-config-volume/repository/conf/deployment.toml
+              subPath: deployment.toml
+            - name: wso2am-pattern-1-am-1-bin
+              mountPath: /home/wso2carbon/wso2-config-volume/bin/wso2server.sh
+              subPath: wso2server.sh
+            - name: mysql-connector-jar
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+            - name: tcpdump-java-agent-jar
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/conf
+            - name: wso2am-gw-separated-gw-entrypoint
+              mountPath: /home/wso2carbon/docker-entrypoint.sh
+              subPath: docker-entrypoint.sh
+            - name: wsp2am-gw-separated-gw-log-storage
+              mountPath: /home/wso2carbon/wso2am-3.2.0/repository/logs
+              subPath: logs
+              readOnly: false
+        - name: netshoot
+          image: nicolaka/netshoot:latest
+          command: [ 'sleep', 'infinity' ]
+          env:
+            - name: MAIN_HOSTNAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_RAW
+          volumeMounts:
+            - name: netstat-captured-data-storage
+              mountPath: /root/netstat-data
+      serviceAccountName: wso2am-gw-separated-svc-account
+#      imagePullSecrets:
+#        - name: wso2am-pattern-1-creds
+      volumes:
+        - name: wso2am-gw-separated-gw-deployment-conf
+          configMap:
+            name: wso2am-gw-separated-gw-deployment-conf
+        - name: wso2am-gw-separated-gw-bin
+          configMap:
+            name: wso2am-gw-separated-gw-bin
+        - name: wso2am-gw-separated-gw-entrypoint
+          configMap:
+            name: wso2am-gw-separated-gw-entrypoint
+            defaultMode: 0407
+        - name: netstat-captured-data-storage
+          persistentVolumeClaim:
+            claimName: netstat-captured-data-storage-claim
+        - name: wsp2am-gw-separated-gw-log-storage
+          persistentVolumeClaim:
+            claimName: wso2am-gw-separated-gw-log-storage-claim
+        - name: mysql-connector-jar
+          emptyDir: {}
+        - name: tcpdump-java-agent-jar
+          emptyDir: { }
+

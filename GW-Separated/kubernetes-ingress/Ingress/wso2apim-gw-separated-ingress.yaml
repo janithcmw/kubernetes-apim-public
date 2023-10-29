@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wso2am-gw-separated-ingress
+  namespace: wso2
+  labels:
+    pattern: wso2am-gw-separated
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+spec:
+  tls:
+    - hosts:
+        - wso2am-pstmkm-server
+        - wso2am-gw-server
+  rules:
+    - host: wso2am-pstmkm-server
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2am-gw-separated-pstmkm-service
+                port:
+                  number: 9443
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2am-gw-separated-pstmkm-service
+                port:
+                  number: 9763
+
+    - host: wso2am-gw-server
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2am-gw-separated-gw-service
+                port:
+                  number: 8243
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wso2am-gw-separated-gw-service
+                port:
+                  number: 8280
