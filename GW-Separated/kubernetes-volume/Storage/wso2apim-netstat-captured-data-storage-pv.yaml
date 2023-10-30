@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: netstat-captured-data-storage
+  namespace: wso2
 spec:
   capacity:
     storage: 50Gi
@@ -11,4 +12,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: fss.csi.oraclecloud.com
-    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaadd3e6tnfqwillqojxwiotjmfsc2ylefuzaaaaa:10.0.10.181:/bny-k8s-oke-filesystem-v2/netstat-captured-data-storage
+    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaafh5nggnfqwillqojxwiotjmfsc2ylefuzqaaaa:10.0.10.198:/netstat-captured-data-gw/netstat-captured-data-storage
