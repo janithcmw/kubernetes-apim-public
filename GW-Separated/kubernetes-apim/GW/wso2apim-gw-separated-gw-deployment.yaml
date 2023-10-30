@@ -109,7 +109,7 @@ spec:
             - name: wso2am-gw-separated-gw-deployment-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf/deployment.toml
               subPath: deployment.toml
-            - name: wso2am-pattern-1-am-1-bin
+            - name: wso2am-gw-separated-gw-bin
               mountPath: /home/wso2carbon/wso2-config-volume/bin/wso2server.sh
               subPath: wso2server.sh
             - name: mysql-connector-jar
