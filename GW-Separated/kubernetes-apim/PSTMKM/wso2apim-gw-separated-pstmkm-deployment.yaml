@@ -117,7 +117,7 @@ spec:
             - name: wso2am-gw-separated-pstmkm-docker-entrypoint
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
-            - name: wsp2apim-log-storage
+            - name: wso2am-gw-separated-pstmkm-log-storage
               mountPath: /home/wso2carbon/wso2am-3.2.0/repository/logs
               subPath: logs
               readOnly: false
@@ -154,9 +154,9 @@ spec:
         - name: netstat-captured-data-storage
           persistentVolumeClaim:
             claimName: netstat-captured-data-storage-claim
-        - name: wsp2apim-log-storage
+        - name: wso2am-gw-separated-pstmkm-log-storage
           persistentVolumeClaim:
-            claimName: wso2apim-log-storage-claim
+            claimName: wso2am-gw-separated-pstmkm-log-storage-claim
         - name: mysql-connector-jar
           emptyDir: {}
         - name: tcpdump-java-agent-jar
