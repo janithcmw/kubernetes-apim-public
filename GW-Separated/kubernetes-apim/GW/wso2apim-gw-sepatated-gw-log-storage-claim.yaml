@@ -4,7 +4,7 @@ metadata:
   name: wso2am-gw-separated-gw-log-storage-claim
   namespace: wso2
   labels:
-    deployment: wso2am-pattern-1-am
+    deployment: wso2am-gw-separated
     product: api-manager
 spec:
   storageClassName: ""

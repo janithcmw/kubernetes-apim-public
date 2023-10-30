@@ -51,7 +51,7 @@ spec:
             - name: tcpdump-java-agent-jar
               mountPath: /tcpdump-java-agent-jar
       containers:
-        - name: wso2am-pattern-1-am
+        - name: wso2am-gw-separated
 #          image: "$image.pull.@.wso2"/wso2am:3.2.0
 #          image: janithcmw/wso2apim320:3.2.0
           image: janithcmw/wso2apim320:3.2.0-1
