@@ -27,7 +27,7 @@ spec:
       initContainers:
         - name: init-db
           image: busybox:1.31
-          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z wso2apim-rdbms-service-mysql 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
+          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z wso2am-gw-separated-mysql-service 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
         - name: init-download-mysql-connector
           image: busybox:1.31
           command:
