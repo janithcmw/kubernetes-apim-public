@@ -1,3 +1,20 @@
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: netstat-captured-data-storage
+#  namespace: wso2
+#spec:
+#  capacity:
+#    storage: 50Gi
+#  volumeMode: Filesystem
+#  accessModes:
+#    - ReadWriteMany
+#  persistentVolumeReclaimPolicy: Retain
+#  csi:
+#    driver: fss.csi.oraclecloud.com
+#    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaafh5ol5nfqwillqojxwiotjmfsc2ylefuzqaaaa:10.0.20.218:/gw-separated-gw-netshoot/netstat-captured-data-storage
+# update configs to use nfs. plese refer to the link https://videohub.oracle.com/media/ShortVideo+-+OKE+Persistent+Volume+ReadWriteMany/1_clwh7h2y/161711051
+# wait until the k8s cluster is in active state to create the file system. there is a doubt that it is required to wait similar to that but not 100% sure.
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -6,10 +23,8 @@ metadata:
 spec:
   capacity:
     storage: 50Gi
-  volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  csi:
-    driver: fss.csi.oraclecloud.com
-    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaafh5ol5nfqwillqojxwiotjmfsc2ylefuzqaaaa:10.0.20.218:/gw-separated-gw-netshoot/netstat-captured-data-storage
+  nfs:
+    server: 10.0.10.158
+    path: "/bny-k8s-high-cpu-test-tcp-dumps"
