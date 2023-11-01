@@ -34,8 +34,8 @@ spec:
 
     - name: throttle-decision-secure
       protocol: TCP
-      port: 5672
-      targetPort: 5672
+      port: 8672
+      targetPort: 8672
 
     - name: throttle-decision-non-secure
       protocol: TCP
