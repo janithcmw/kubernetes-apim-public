@@ -139,6 +139,8 @@ spec:
           volumeMounts:
             - name: netstat-captured-data-storage
               mountPath: /root/netstat-data
+            - name: wso2am-gw-separated-gw-log-storage
+              mountPath: /root/gw-log-storage
       serviceAccountName: wso2am-gw-separated-svc-account
 #      imagePullSecrets:
 #        - name: wso2am-pattern-1-creds
