@@ -22,3 +22,23 @@ spec:
       port: 9443
       targetPort: 9443
 
+    - name: throttle-ssl
+      protocol: TCP
+      port: 9711
+      targetPort: 9711
+
+    - name: throttle-tcp
+      protocol: TCP
+      port: 9611
+      targetPort: 9611
+
+    - name: throttle-decision-secure
+      protocol: TCP
+      port: 5672
+      targetPort: 5672
+
+    - name: throttle-decision-non-secure
+      protocol: TCP
+      port: 5672
+      targetPort: 5672
+
