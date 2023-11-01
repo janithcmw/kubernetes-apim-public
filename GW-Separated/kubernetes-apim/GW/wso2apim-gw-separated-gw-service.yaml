@@ -7,7 +7,7 @@ metadata:
 spec:
   # label keys and values that must match in order to receive traffic for this service
   selector:
-    deployment: wso2am-gw-separated
+    deployment: wso2am-gw-separated-gw
     product: api-manager
   ports:
     # ports that this service should serve on

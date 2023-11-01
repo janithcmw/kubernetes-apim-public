@@ -12,12 +12,12 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      deployment: wso2am-gw-separated
+      deployment: wso2am-gw-separated-pstmkm
       product: api-manager
   template:
     metadata:
       labels:
-        deployment: wso2am-gw-separated
+        deployment: wso2am-gw-separated-pstmkm
         product: api-manager
     spec:
       hostAliases:
