@@ -1,3 +1,9 @@
+#from following options, both the options will work but, you have to make sure that the file system should be created
+#after the completion of the k8s cluster creation.
+#still there is no solution for the permission issues which will be triggered over this
+#as a hack the netshoot pod was used and add the apim log mouts to the same pod and then update the permission of the
+#mount using the chmod -R 777 /<path to mount>.
+#--- option-1 ----------------------------------------------------------------------------------------------------------
 #apiVersion: v1
 #kind: PersistentVolume
 #metadata:
@@ -16,8 +22,10 @@
 #  csi:
 #    driver: fss.csi.oraclecloud.com
 #    volumeHandle: ocid1.filesystem.oc1.iad.aaaaaaaaaafigpzcnfqwillqojxwiotjmfsc2ylefuzqaaaa:10.0.20.84:/gw-separated-file-system
+#
 # update configs to use nfs. plese refer to the link https://videohub.oracle.com/media/ShortVideo+-+OKE+Persistent+Volume+ReadWriteMany/1_clwh7h2y/161711051
-# wait until the k8s cluster is in active state to create the file system. there is a doubt that it is required to wait similar to that but not 100% sure.
+#-----------------------------------------------------------------------------------------------------------------------
+#--- option-2 ----------------------------------------------------------------------------------------------------------
 apiVersion: v1
 kind: PersistentVolume
 metadata:

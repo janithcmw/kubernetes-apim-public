@@ -15,10 +15,12 @@ kubectl create -f kubernetes-rdbms/MySQL/wso2apim-gw-separated-mysql-deployment.
 
 # APIM-GW-Separated-Netshoot
 #PVCs
+echo 'deploying pv and pvc of netshoot ...'
 kubectl create -f kubernetes-volume/Storage/wso2apim-netstat-captured-data-storage-pv.yaml
 kubectl create -f kubernetes-volume/Storage/wso2apim-netstat-captured-data-storage-claim.yaml
 
 # APIM-GW-Separated-PSTMKM
+echo 'deploying deployment of PSTMKM node/nodes ...'
 kubectl create -f kubernetes-apim/PSTMKM/wso2apim-gw-separated-pstmkm-log-storage-pv.yaml
 kubectl create -f kubernetes-apim/PSTMKM/wso2apim-gw-sepatated-pstmkm-log-storage-claim.yaml
 kubectl create -f kubernetes-apim/PSTMKM/wso2apim-gw-separated-pstmkm-conf-entrypoint.yaml
@@ -28,6 +30,7 @@ kubectl create -f kubernetes-apim/PSTMKM/wso2apim-gw-separated-pstmkm-service.ya
 kubectl create -f kubernetes-apim/PSTMKM/wso2apim-gw-separated-pstmkm-deployment.yaml
 
 # APIM-GW-Separated-GW
+echo 'deploying deployment of GW node/nodes ...'
 kubectl create -f kubernetes-apim/GW/wso2apim-gw-separated-gw-log-storage-pv.yaml
 kubectl create -f kubernetes-apim/GW/wso2apim-gw-sepatated-gw-log-storage-claim.yaml
 kubectl create -f kubernetes-apim/GW/wso2apim-gw-separated-gw-conf-entrypoint.yaml
@@ -37,6 +40,7 @@ kubectl create -f kubernetes-apim/GW/wso2apim-gw-separated-gw-service.yaml
 kubectl create -f kubernetes-apim/GW/wso2apim-gw-separated-gw-deployment.yaml
 
 #Ingress
+echo 'deploying ingress ...'
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
 kubectl create -f kubernetes-ingress/Ingress/wso2apim-gw-separated-ingress.yaml
 
